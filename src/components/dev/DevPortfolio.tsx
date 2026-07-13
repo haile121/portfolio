@@ -193,18 +193,23 @@ export function DevPortfolio({
           </span>
         </div>
         <ul className="hidden md:flex items-center gap-10">
-          {["About", "Skills", "Experience", "Projects", "Contact"].map(
-            (item) => (
-              <li key={item}>
-                <a
-                  href={`#dev-${item.toLowerCase()}`}
-                  className="text-[13px] font-semibold tracking-wider text-text2 uppercase relative after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 hover:after:w-full after:bg-blue after:transition-all hover:text-text transition-colors clickable"
-                >
-                  {item}
-                </a>
-              </li>
-            ),
-          )}
+          {[
+            "About",
+            "Skills",
+            "Experience",
+            "Projects",
+            "Recognitions",
+            "Contact",
+          ].map((item) => (
+            <li key={item}>
+              <a
+                href={`#dev-${item.toLowerCase()}`}
+                className="text-[13px] font-semibold tracking-wider text-text2 uppercase relative after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 hover:after:w-full after:bg-blue after:transition-all hover:text-text transition-colors clickable"
+              >
+                {item}
+              </a>
+            </li>
+          ))}
         </ul>
         <div className="flex items-center gap-4">
           <button
@@ -228,40 +233,63 @@ export function DevPortfolio({
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[52%] font-dm-serif text-[clamp(120px,18vw,220px)] font-normal text-transparent pointer-events-none select-none tracking-tight opacity-50 [-webkit-text-stroke:1px_var(--color-border2)]">
           DEV
         </div>
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-surface border border-border rounded-full text-xs font-semibold tracking-wider text-text2 mb-4 w-fit">
-          <span className="w-1.5 h-1.5 bg-[#10b981] rounded-full animate-pulse shadow-[0_0_0_0_rgba(16,185,129,0.4)]" />
-          Available for projects
+
+        <div className="flex flex-col-reverse lg:flex-row items-center justify-between gap-12 lg:gap-8 w-full relative z-10 pt-12 lg:pt-0">
+          {/* LEFT CONTENT */}
+          <div className="flex-1 w-full max-w-[800px]">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-surface border border-border rounded-full text-xs font-semibold tracking-wider text-text2 mb-4 w-fit">
+              <span className="w-1.5 h-1.5 bg-[#10b981] rounded-full animate-pulse shadow-[0_0_0_0_rgba(16,185,129,0.4)]" />
+              Available for projects
+            </div>
+            <div className="text-xs font-bold tracking-[0.25em] uppercase text-blue mb-7 flex items-center gap-3 before:w-8 before:h-px before:bg-current">
+              Full-Stack Developer
+            </div>
+            <h1 className="font-dm-serif text-[clamp(3.5rem,7vw,7rem)] leading-[1.02] tracking-tight mb-7 max-w-[900px]">
+              Crafting <em className="italic text-blue not-italic">precise,</em>
+              <br />
+              fast & <em className="italic text-blue not-italic">
+                scalable
+              </em>{" "}
+              web.
+            </h1>
+            <p className="text-[17px] text-text2 leading-relaxed max-w-[520px] mb-14">
+              I enjoy turning ambitious ideas into software people actually use. 
+              From polished interfaces to the systems running behind them, 
+              I build products that feel simple, even when the engineering isn't.
+            </p>
+            <div className="flex items-center gap-5">
+              <a
+                href="#dev-projects"
+                className="inline-flex items-center gap-2.5 px-8 py-3.5 bg-blue text-white rounded-md font-syne text-sm font-bold tracking-wider relative overflow-hidden group hover:-translate-y-px hover:shadow-[0_12px_40px_var(--color-glow)] transition-all clickable"
+              >
+                <span className="absolute inset-0 bg-white/10 -translate-x-[101%] group-hover:translate-x-0 transition-transform duration-350 ease-[cubic-bezier(0.16,1,0.3,1)]"></span>
+                <span className="relative z-10">View Projects</span>
+                <ArrowRight size={16} className="relative z-10" />
+              </a>
+              <a
+                href="#dev-contact"
+                className="inline-flex items-center gap-2.5 px-7 py-[14px] bg-transparent text-text border-[1.5px] border-border2 rounded-md font-syne text-sm font-semibold tracking-wider transition-all hover:border-text hover:-translate-y-px clickable"
+              >
+                Get in touch
+              </a>
+            </div>
+          </div>
+
+          {/* RIGHT IMAGE */}
+          <div className="w-full max-w-[280px] lg:max-w-[400px] shrink-0 self-center lg:self-end relative group mb-10 lg:mb-0">
+            <div className="absolute -inset-4 border border-blue/20 rounded-2xl md:rounded-[40px] transform group-hover:-rotate-2 group-hover:scale-[1.02] transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] z-0"></div>
+            <div className="absolute -inset-4 border border-blue/10 rounded-2xl md:rounded-[40px] transform group-hover:rotate-3 group-hover:scale-[1.02] transition-all duration-700 delay-75 ease-[cubic-bezier(0.16,1,0.3,1)] z-0"></div>
+            <div className="relative z-10 aspect-[4/5] overflow-hidden rounded-2xl md:rounded-[40px] bg-surface shadow-2xl shadow-blue/10">
+              <img
+                src="/HaileSuit.jpg"
+                alt="Hailemariam Agabzie"
+                className="w-full h-full object-cover transform scale-105 group-hover:scale-100 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] grayscale group-hover:grayscale-0"
+              />
+            </div>
+          </div>
         </div>
-        <div className="text-xs font-bold tracking-[0.25em] uppercase text-blue mb-7 flex items-center gap-3 before:w-8 before:h-px before:bg-current">
-          Full-Stack Developer
-        </div>
-        <h1 className="font-dm-serif text-[clamp(3.5rem,7vw,7rem)] leading-[1.02] tracking-tight mb-7 max-w-[900px]">
-          Crafting <em className="italic text-blue not-italic">precise,</em>
-          <br />
-          fast & <em className="italic text-blue not-italic">scalable</em> web.
-        </h1>
-        <p className="text-[17px] text-text2 leading-relaxed max-w-[520px] mb-14">
-          I build full-stack products that are fast, accessible, and
-          delightfully well-crafted. Currently focused on React, Next.js &
-          distributed systems.
-        </p>
-        <div className="flex items-center gap-5">
-          <a
-            href="#dev-projects"
-            className="inline-flex items-center gap-2.5 px-8 py-3.5 bg-blue text-white rounded-md font-syne text-sm font-bold tracking-wider relative overflow-hidden group hover:-translate-y-px hover:shadow-[0_12px_40px_var(--color-glow)] transition-all clickable"
-          >
-            <span className="absolute inset-0 bg-white/10 -translate-x-[101%] group-hover:translate-x-0 transition-transform duration-350 ease-[cubic-bezier(0.16,1,0.3,1)]"></span>
-            <span className="relative z-10">View Projects</span>
-            <ArrowRight size={16} className="relative z-10" />
-          </a>
-          <a
-            href="#dev-contact"
-            className="inline-flex items-center gap-2.5 px-7 py-[14px] bg-transparent text-text border-[1.5px] border-border2 rounded-md font-syne text-sm font-semibold tracking-wider transition-all hover:border-text hover:-translate-y-px clickable"
-          >
-            Get in touch
-          </a>
-        </div>
-        <div className="absolute bottom-9 right-8 md:right-16 flex flex-col items-center gap-2 text-text3 text-[11px] tracking-[0.15em] uppercase hidden md:flex">
+
+        <div className="absolute bottom-9 right-8 md:right-16 flex flex-col items-center gap-2 text-text3 text-[11px] tracking-[0.15em] uppercase hidden md:flex z-20">
           <div className="w-px h-12 bg-gradient-to-b from-text3 to-transparent animate-[scrollPulse_2s_ease-in-out_infinite] opacity-30 origin-top" />
           Scroll
         </div>
@@ -322,7 +350,7 @@ export function DevPortfolio({
                 full-stack developer
               </strong>{" "}
               passionate about building digital experiences that don't just work
-              — they{" "}
+              , they{" "}
               <span className="relative inline-block z-0 after:absolute after:bottom-0.5 after:-inset-x-1 after:h-1.5 after:bg-blue-dim after:-z-10 after:rounded-sm">
                 feel remarkable
               </span>
@@ -335,7 +363,7 @@ export function DevPortfolio({
                 scalable backend systems
               </strong>{" "}
               to crafting pixel-perfect interfaces. I believe the best software
-              is invisible — it just gets out of the way and lets people do what
+              is invisible, it just gets out of the way and lets people do what
               they came to do.
             </p>
             <div className="grid grid-cols-2 gap-px bg-border border border-border mt-12 w-full">
@@ -375,7 +403,8 @@ export function DevPortfolio({
                 <span className="text-blue">const</span>{" "}
                 <span className="text-[#a78bfa]">me</span> = {"{"} <br />
                 &nbsp;&nbsp;<span className="text-[#a78bfa]">name</span>:{" "}
-                <span className="text-[#34d399]">"Your Name"</span>,<br />
+                <span className="text-[#34d399]">"Hailemariam Agabzie"</span>,
+                <br />
                 &nbsp;&nbsp;<span className="text-[#a78bfa]">role</span>:{" "}
                 <span className="text-[#34d399]">"Full-Stack Dev"</span>,<br />
                 &nbsp;&nbsp;<span className="text-[#a78bfa]">
@@ -385,13 +414,18 @@ export function DevPortfolio({
                 &nbsp;&nbsp;<span className="text-[#a78bfa]">stack</span>: [
                 <br />
                 &nbsp;&nbsp;&nbsp;&nbsp;
+                <span className="text-[#34d399]">"React"</span>,{" "}
                 <span className="text-[#34d399]">"Next.js"</span>,{" "}
                 <span className="text-[#34d399]">"TypeScript"</span>,<br />
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <span className="text-[#34d399]">"Tailwind"</span>,{" "}
-                <span className="text-[#34d399]">"Node"</span>,<br />
+                <span className="text-[#34d399]">"Node.js"</span>,{" "}
+                <span className="text-[#34d399]">"PostgreSQL"</span>,{" "}
+                <span className="text-[#34d399]">"Tailwind CSS"</span>,<br />
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <span className="text-[#34d399]">"PostgreSQL"</span>
+                <span className="text-[#34d399]">"Docker"</span>,{" "}
+                <span className="text-[#34d399]">"AWS"</span>,{" "}
+                <span className="text-[#34d399]">"GraphQL"</span>,{" "}
+                <span className="text-[#34d399]">"Prisma"</span>
                 <br />
                 &nbsp;&nbsp;],
                 <br />
@@ -571,6 +605,12 @@ export function DevPortfolio({
               company: "Oasis Infobyte · Remote, India",
               desc: "Engaged in hands-on projects to solve real-world problems through web development. Gained practical experience in building and improving web-based applications in a remote environment.",
             },
+            {
+              date: "Dec 2024 — Jan 2025",
+              role: "Web Development Intern",
+              company: "XAI · Remote, Morocco",
+              desc: "Contributed to front-end and back-end development tasks. Collaborated with a remote team to deliver robust web application features.",
+            },
           ].map((exp, i) => (
             <motion.div
               variants={fadeUpVariant}
@@ -589,6 +629,71 @@ export function DevPortfolio({
               <p className="text-[15px] text-text2 leading-relaxed">
                 {exp.desc}
               </p>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
+
+      {/* RECOGNITIONS */}
+      <motion.section
+        id="dev-recognitions"
+        className="px-8 md:px-16 pb-20 md:pb-32"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+      >
+        <div className="flex items-baseline gap-5 mb-16">
+          <span className="font-jetbrains text-xs text-blue min-w-[40px]">
+            03.5
+          </span>
+          <h2 className="font-dm-serif text-[clamp(2rem,4vw,3.5rem)] tracking-tight leading-[1.1]">
+            Recognitions & Certificates
+          </h2>
+          <div className="flex-1 h-px bg-border" />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 border-t border-border pt-10 mt-[-20px]">
+          {[
+            {
+              title: "PLP Software Development",
+              issuer: "Remote Scholarship",
+            },
+            {
+              title: "Cursor Hackathon Organizer",
+              issuer: "Bahir Dar University",
+            },
+            {
+              title: "Backend Bootcamp Developer",
+              issuer: "IS HUB Addis Ababa University",
+            },
+            {
+              title: "Fundamentals of Web Dev",
+              issuer: "Udacity Certificate",
+            },
+            {
+              title: "Founder & Lead",
+              issuer: "Meta Codz BiT",
+            },
+            {
+              title: "English Center Trainee",
+              issuer: "ELIC",
+            },
+            {
+              title: "Leadership Training",
+              issuer: "Various Programs",
+            },
+          ].map((cert, i) => (
+            <motion.div
+              variants={fadeUpVariant}
+              key={cert.title}
+              className="bg-surface border border-border p-6 rounded-lg hover:border-blue transition-colors group"
+            >
+              <div className="w-10 h-10 rounded-full bg-blue-light text-blue flex items-center justify-center mb-4 text-lg">
+                🏆
+              </div>
+              <h3 className="text-[17px] font-bold text-text mb-2 group-hover:text-blue transition-colors">
+                {cert.title}
+              </h3>
+              <p className="text-sm text-text2 font-medium">{cert.issuer}</p>
             </motion.div>
           ))}
         </div>
@@ -617,7 +722,8 @@ export function DevPortfolio({
               num: "001 — Featured",
               name: "Ethiopian Optometric Association",
               desc: "Full-stack web application with comprehensive admin management tools and optimized public routing for the organization's digital operations and member services.",
-              tags: ["Next.js", "TypeScript", "Full-Stack"],
+              tags: ["Next.js", "TypeScript", "Full-Stack", "MERN"],
+              href: "https://ethiopianoptometricassociation.org/",
               isFeatured: true,
             },
             {
@@ -625,6 +731,7 @@ export function DevPortfolio({
               name: "AlphaX",
               desc: "Bilingual (Amharic/English) learning platform for C++ and web fundamentals — structured lessons, placement tests, quizzes, verified certificates, a live compiler, gamification (XP, streaks, coins), and an AI tutor.",
               tags: ["EdTech", "AI Tutor", "Bilingual"],
+              href: "https://alpha-x-frontend.vercel.app/",
             },
             {
               num: "003",
@@ -659,7 +766,9 @@ export function DevPortfolio({
           ].map((proj, i) => (
             <motion.a
               variants={fadeUpVariant}
-              href="#"
+              href={proj.href || "#"}
+              target={proj.href ? "_blank" : undefined}
+              rel={proj.href ? "noopener noreferrer" : undefined}
               key={proj.num}
               className={`group flex flex-col md:flex-row md:items-center gap-8 md:gap-10 p-8 md:p-12 lg:p-16 relative overflow-hidden transition-colors duration-300 clickable bg-bg hover:bg-surface`}
             >
@@ -717,15 +826,21 @@ export function DevPortfolio({
           {[
             {
               text: "Exceptional engineer who brings a rare combination of technical depth and design sensibility. Shipped our most complex feature in record time with zero bugs in production.",
-              author: "James Mitchell",
+              author: "Alemayehu Tesfaye",
               role: "CTO at TechCo",
-              avatar: "JM",
+              avatar: "AT",
             },
             {
               text: "Working with them transformed how our team thinks about frontend architecture. The codebase is clean, documented, and a joy to work in. Truly senior-level thinking.",
-              author: "Sarah Reynolds",
+              author: "Mekdes Tadesse",
               role: "Product Lead at StartupXYZ",
-              avatar: "SR",
+              avatar: "MT",
+            },
+            {
+              text: "Hailemariam's dedication to quality and rapid delivery sets a new standard for development. His technical intuition is outstanding.",
+              author: "Halim Bahae",
+              role: "Founder and CEO at XAI Morocco",
+              avatar: "HB",
             },
           ].map((quote, i) => (
             <motion.div
