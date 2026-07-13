@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Hailemariam Agabzie - Dual Portfolio
 
-## Getting Started
+A comprehensive, split-screen professional portfolio showcasing the intersection of Software Development and Digital Creation (Video Editing & Content Creation).
 
-First, run the development server:
+## 🚀 Overview
+
+This project is built using modern web technologies to deliver a fast, responsive, and visually engaging experience. It features a unique split-pane landing page that allows visitors to explore either the "Developer" or "Creator" side of my professional journey.
+
+## 🛠️ Technology Stack
+
+- **Framework:** [Next.js 16](https://nextjs.org/) (App Router)
+- **Library:** [React 19](https://react.dev/)
+- **Styling:** [Tailwind CSS 4](https://tailwindcss.com/)
+- **Animations:** [Framer Motion](https://www.framer.com/motion/)
+- **Icons:** [Lucide React](https://lucide.dev/)
+- **Containerization:** Docker & Docker Compose
+
+## ✨ Key Features
+
+- **Split-Screen Interaction:** Seamlessly navigate between Developer and Creator profiles.
+- **Developer Portfolio:** Highlights software projects (DevHub, EOA), XAI internship experience, and modern tech skills.
+- **Creator Portfolio:** Showcases video editing wizardry, content creation, and creative projects.
+- **Responsive Design:** Fully optimized for all screen sizes.
+- **Smooth Animations:** Powered by Framer Motion for a dynamic user experience.
+
+## 🐳 Running with Docker
+
+This project includes Docker configuration for easy local development and containerized deployment.
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# Build and start the container
+docker-compose up -d --build
+
+# Stop the container
+docker-compose down
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 💻 Local Development
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+If you prefer to run the project locally without Docker:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+# Install dependencies
+npm install
 
-## Learn More
+# Start the development server
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📄 License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This is a personal portfolio repository. All rights reserved.
