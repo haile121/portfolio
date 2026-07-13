@@ -76,16 +76,25 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
           </h2>
 
           <div className="flex flex-wrap gap-2 mb-8">
-            {["React", "Next.js", "TypeScript", "Node", "Postgres"].map(
-              (skill) => (
-                <span
-                  key={skill}
-                  className="text-[11px] font-semibold tracking-wider px-3 py-1.5 rounded-full bg-surface text-text2 border border-border transition-all duration-200 group-hover:border-border2 hover:!bg-blue-light hover:!text-blue hover:!border-blue"
-                >
-                  {skill}
-                </span>
-              ),
-            )}
+            {[
+              "React",
+              "Next.js",
+              "TypeScript",
+              "Node.js",
+              "PostgreSQL",
+              "Tailwind CSS",
+              "Docker",
+              "AWS",
+              "GraphQL",
+              "Prisma",
+            ].map((skill) => (
+              <span
+                key={skill}
+                className="text-[11px] font-semibold tracking-wider px-3 py-1.5 rounded-full bg-surface text-text2 border border-border transition-all duration-200 group-hover:border-border2 hover:!bg-blue-light hover:!text-blue hover:!border-blue"
+              >
+                {skill}
+              </span>
+            ))}
           </div>
 
           <p className="text-[15px] text-text2 leading-relaxed max-w-[340px] mb-10">
@@ -168,16 +177,24 @@ export function LandingPage({ onNavigate }: LandingPageProps) {
           </h2>
 
           <div className="flex flex-wrap gap-2 mb-8">
-            {["UI/UX", "Brand Design", "Motion", "Content", "Figma"].map(
-              (skill) => (
-                <span
-                  key={skill}
-                  className="text-[11px] font-semibold tracking-wider px-3 py-1.5 rounded-full bg-surface text-text2 border border-border transition-all duration-200 group-hover:border-border2 hover:!bg-[#f97316]/10 hover:!text-[#f97316] hover:!border-[#f97316]"
-                >
-                  {skill}
-                </span>
-              ),
-            )}
+            {[
+              "UI/UX",
+              "Brand Identity",
+              "Motion Design",
+              "Content Strategy",
+              "Figma",
+              "After Effects",
+              "Illustrator",
+              "Social Media",
+              "Copywriting",
+            ].map((skill) => (
+              <span
+                key={skill}
+                className="text-[11px] font-semibold tracking-wider px-3 py-1.5 rounded-full bg-surface text-text2 border border-border transition-all duration-200 group-hover:border-border2 hover:!bg-[#f97316]/10 hover:!text-[#f97316] hover:!border-[#f97316]"
+              >
+                {skill}
+              </span>
+            ))}
           </div>
 
           <p className="text-[15px] text-text2 leading-relaxed max-w-[340px] mb-10">
