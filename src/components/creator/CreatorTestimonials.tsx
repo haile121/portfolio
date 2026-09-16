@@ -1,64 +1,89 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { ScrollReveal, ScrollRevealItem } from "../dev/ScrollReveal";
 import { creatorTestimonials } from "../../data/creator";
-
-const fadeUpVariant = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.7,
-      ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
-    },
-  },
-};
+import { Star, Quote } from "lucide-react";
 
 export function CreatorTestimonials() {
   return (
-    <motion.section
-      className="px-8 md:px-16 pb-20 md:pb-32"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-100px" }}
-    >
-      <div className="flex items-baseline gap-5 mb-16">
+    <section className="px-6 md:px-16 py-16 md:py-28 overflow-hidden">
+      {/* Header */}
+      <ScrollReveal
+        variant="blur-in"
+        className="flex items-baseline gap-5 mb-20"
+      >
         <span className="font-jetbrains text-xs text-[#f97316] min-w-[40px]">
           05
         </span>
-        <h2 className="font-dm-serif text-[clamp(2rem,4vw,3.5rem)] tracking-tight leading-[1.1]">
-          Client words
-        </h2>
-        <div className="flex-1 h-px bg-border" />
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border">
-        {creatorTestimonials.map((quote, i) => (
-          <motion.div
-            variants={fadeUpVariant}
+        <div className="flex-1 flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <h2 className="font-dm-serif text-[clamp(2.2rem,4.5vw,3.8rem)] tracking-tight leading-[1.1]">
+            Client Words
+          </h2>
+          <p className="text-xs text-text3 font-mono max-w-sm leading-relaxed">
+            Feedback on brand design, creative direction, and digital user
+            experiences.
+          </p>
+        </div>
+      </ScrollReveal>
+
+      {/* Testimonials Grid */}
+      <ScrollReveal
+        stagger
+        staggerDelay={0.15}
+        className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-10 pt-6 pb-8"
+      >
+        {creatorTestimonials.map((quote) => (
+          <ScrollRevealItem
+            variant="fade-up"
             key={quote.author}
-            className="bg-bg p-10 md:p-12 hover:bg-surface transition-colors duration-300"
+            className="group relative"
           >
-            <span className="block font-dm-serif text-6xl text-[#f97316] leading-[0.6] mb-6">
-              "
-            </span>
-            <p className="text-base leading-[1.8] text-text2 mb-7 italic">
-              "{quote.text}"
-            </p>
-            <div className="flex items-center gap-3.5">
-              <div className="w-10 h-10 rounded-full bg-surface border border-border flex items-center justify-center text-[15px] font-bold text-text2">
-                {quote.avatar}
-              </div>
-              <div>
-                <div className="text-sm font-bold text-text">
-                  {quote.author}
+            {/* Modern Graphic Quote Icon Anchored directly on Card Border Line */}
+            <div className="absolute -top-5 -left-3 z-20 pointer-events-none drop-shadow-[0_4px_12px_rgba(0,0,0,0.2)]">
+              <Quote size={40} className="testimonial-quote-icon-creator" />
+            </div>
+
+            {/* Asymmetric Shaped Card Container — Responsive for Day / Night */}
+            <div className="relative testimonial-card border rounded-tl-[36px] rounded-tr-[16px] rounded-bl-[20px] rounded-br-[44px] p-7 sm:p-9 pt-10 flex flex-col justify-between min-h-[340px] transition-transform duration-300 group-hover:-translate-y-1">
+              {/* Top-Right Floating Circular Headshot Avatar */}
+              <div className="absolute -top-6 right-6 z-30">
+                <div className="w-20 h-20 sm:w-22 sm:h-22 rounded-full border-[4px] testimonial-avatar flex items-center justify-center text-lg font-bold shadow-2xl font-mono">
+                  {quote.avatar}
                 </div>
-                <div className="text-xs text-text3 mt-0.5">{quote.role}</div>
+              </div>
+
+              {/* Message First */}
+              <p className="text-[14px] sm:text-[15px] leading-relaxed testimonial-text font-sans mt-3 mb-6 pr-16">
+                "{quote.text}"
+              </p>
+
+              {/* Author Details: Full Name & Full Title */}
+              <div className="mb-6 border-t testimonial-divider pt-4">
+                <h3 className="text-base sm:text-lg font-bold tracking-tight testimonial-author-name font-inter">
+                  {quote.author}
+                </h3>
+                <p className="text-xs testimonial-author-role font-sans font-medium mt-1 leading-relaxed">
+                  {quote.role}
+                </p>
+              </div>
+
+              {/* Bottom Rating Pill Badge with 5 Stars */}
+              <div>
+                <div className="inline-flex items-center gap-1 px-3.5 py-1.5 testimonial-rating-pill font-extrabold text-xs rounded-full shadow-lg transition-transform duration-300 group-hover:scale-105">
+                  {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      size={12}
+                      fill="currentColor"
+                      className="text-current"
+                    />
+                  ))}
+                </div>
               </div>
             </div>
-          </motion.div>
+          </ScrollRevealItem>
         ))}
-      </div>
-    </motion.section>
+      </ScrollReveal>
+    </section>
   );
 }

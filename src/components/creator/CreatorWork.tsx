@@ -1,20 +1,35 @@
 "use client";
 
+import { ScrollReveal, ScrollRevealItem } from "../dev/ScrollReveal";
+
 export function CreatorWork() {
   return (
     <section id="work" className="px-8 md:px-16 pb-20 md:pb-32">
-      <div className="flex items-baseline gap-5 mb-16">
+      {/* Section Header — clip-reveal */}
+      <ScrollReveal
+        variant="clip-reveal"
+        className="flex items-baseline gap-5 mb-16"
+      >
         <span className="font-jetbrains text-xs text-[#f97316] min-w-[40px]">
-          02
+          04
         </span>
         <h2 className="font-dm-serif text-[clamp(2rem,4vw,3.5rem)] tracking-tight leading-[1.1]">
           Selected work
         </h2>
         <div className="flex-1 h-px bg-border" />
-      </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0.5 bg-border">
+      </ScrollReveal>
+
+      {/* Grid — staggered parent reveal */}
+      <ScrollReveal
+        stagger
+        staggerDelay={0.15}
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0.5 bg-border"
+      >
         {/* Thumb 1 */}
-        <div className="bg-bg aspect-[4/3] relative overflow-hidden group clickable">
+        <ScrollRevealItem
+          variant="fade-up"
+          className="bg-bg aspect-[4/3] relative overflow-hidden group clickable"
+        >
           <div className="w-full h-full flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 bg-gradient-to-br from-[#0f172a] to-[#1e293b] p-5">
             <div className="font-dm-serif text-5xl text-white/10 text-center tracking-tight leading-[1.1]">
               NOVA
@@ -30,10 +45,13 @@ export function CreatorWork() {
               Nova Studio — Full Brand System
             </div>
           </div>
-        </div>
+        </ScrollRevealItem>
 
         {/* Thumb 2 */}
-        <div className="bg-bg relative overflow-hidden group clickable md:col-span-1 lg:row-span-2 min-h-[400px]">
+        <ScrollRevealItem
+          variant="fade-up"
+          className="bg-bg relative overflow-hidden group clickable md:col-span-1 lg:row-span-2 min-h-[400px]"
+        >
           <div className="w-full h-full flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 bg-gradient-to-br from-[#fff8f0] to-[#ffffff] p-8 flex-col gap-4">
             <div className="w-full h-[180px] bg-white rounded-xl shadow-[0_8px_40px_rgba(0,0,0,0.08)] flex items-center justify-center flex-col gap-2">
               <div className="w-[60px] h-[60px] bg-[#f97316] rounded-2xl flex items-center justify-center text-white text-2xl">
@@ -57,10 +75,13 @@ export function CreatorWork() {
               Pulse — Analytics SaaS UI
             </div>
           </div>
-        </div>
+        </ScrollRevealItem>
 
         {/* Thumb 3 */}
-        <div className="bg-bg aspect-[4/3] relative overflow-hidden group clickable">
+        <ScrollRevealItem
+          variant="fade-up"
+          className="bg-bg aspect-[4/3] relative overflow-hidden group clickable"
+        >
           <div className="w-full h-full flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 bg-gradient-to-tr from-[#1a1a2e] via-[#16213e] to-[#0f3460] relative overflow-hidden">
             <div className="absolute inset-0 flex items-center justify-center">
               <svg viewBox="0 0 200 200" width="160" height="160">
@@ -106,13 +127,16 @@ export function CreatorWork() {
               Logo Design
             </div>
             <div className="text-[17px] font-bold text-white tracking-tight">
-              Orbit — Motion Studio Logo
+              Orbit — Creative Studio Logo
             </div>
           </div>
-        </div>
+        </ScrollRevealItem>
 
         {/* Thumb 4 */}
-        <div className="bg-bg aspect-[4/3] relative overflow-hidden group clickable">
+        <ScrollRevealItem
+          variant="fade-up"
+          className="bg-bg aspect-[4/3] relative overflow-hidden group clickable"
+        >
           <div className="w-full h-full flex items-center justify-center transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 bg-[#f97316]">
             <div className="text-center font-dm-serif text-[52px] text-white leading-none tracking-tight drop-shadow-[0_4px_20px_rgba(0,0,0,0.2)]">
               2.4M
@@ -128,10 +152,13 @@ export function CreatorWork() {
               Social Campaign — Viral Series
             </div>
           </div>
-        </div>
+        </ScrollRevealItem>
 
         {/* Thumb 5 */}
-        <div className="bg-bg aspect-[4/3] relative overflow-hidden group clickable">
+        <ScrollRevealItem
+          variant="fade-up"
+          className="bg-bg aspect-[4/3] relative overflow-hidden group clickable"
+        >
           <div className="w-full h-full flex-col items-start justify-end p-7 transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-105 bg-[#0a0a0a] flex">
             <div className="font-jetbrains text-[10px] text-[#f97316]/60 mb-3 tracking-widest">
               ANNUAL REPORT 2024
@@ -153,8 +180,8 @@ export function CreatorWork() {
               Annual Report — Editorial Layout
             </div>
           </div>
-        </div>
-      </div>
+        </ScrollRevealItem>
+      </ScrollReveal>
     </section>
   );
 }

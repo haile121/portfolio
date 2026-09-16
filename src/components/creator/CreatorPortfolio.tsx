@@ -18,9 +18,9 @@ export function CreatorPortfolio() {
       <CreatorHero />
       <CreatorMarquee />
       <CreatorAbout />
-      <CreatorWork />
       <CreatorServices />
       <CreatorExperience />
+      <CreatorWork />
       <CreatorTestimonials />
       <CreatorContact />
       <CreatorFooter />
