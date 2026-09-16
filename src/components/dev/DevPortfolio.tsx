@@ -21,8 +21,8 @@ export function DevPortfolio() {
       <DevAbout />
       <DevSkills />
       <DevExperience />
-      <DevRecognitions />
       <DevProjects />
+      <DevRecognitions />
       <DevTestimonials />
       <DevContact />
       <DevFooter />
