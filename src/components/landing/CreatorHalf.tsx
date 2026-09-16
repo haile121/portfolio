@@ -1,235 +1,123 @@
 "use client";
 
-import { useRef, useCallback } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import type { Variants } from "framer-motion";
-import { TypeAnimation } from "react-type-animation";
-import { ArrowUpRight, Palette } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { landingCreatorSkills } from "../../data/landing";
-import { WaveCanvas } from "./WaveCanvas";
+import {
+  FigmaIcon,
+  AeIcon,
+  AiIcon,
+  PrIcon,
+  PsIcon,
+  CapCutIcon,
+  FilmoraIcon,
+  NotionIcon,
+  CanvaIcon,
+  LoomIcon,
+} from "./ToolIcons";
 
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.08, delayChildren: 0.45 },
-  },
-};
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut" } },
-};
+interface CreatorHalfProps {
+  isDimmed?: boolean;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
+}
 
-const ORANGE = "#f97316";
-const O = "249,115,22";
-
-export function CreatorHalf() {
-  const panelRef = useRef<HTMLAnchorElement>(null);
-  const handleMouseMove = useCallback(
-    (e: React.MouseEvent<HTMLAnchorElement>) => {
-      if (!panelRef.current) return;
-      const rect = panelRef.current.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-      panelRef.current.style.setProperty("--glow-x", `${x}%`);
-      panelRef.current.style.setProperty("--glow-y", `${y}%`);
-    },
-    [],
-  );
-
+export function CreatorHalf({
+  isDimmed = false,
+  onMouseEnter,
+  onMouseLeave,
+}: CreatorHalfProps) {
   return (
     <Link
-      ref={panelRef}
       href="/creator"
-      onMouseMove={handleMouseMove}
-      className="group relative flex-1 flex flex-col justify-between p-8 pt-28 md:p-16 md:pt-32 overflow-hidden cursor-none clickable transition-colors duration-500"
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      className={`group relative flex-1 flex flex-col justify-between p-6 pt-16 md:p-10 md:pt-20 transition-all duration-500 overflow-hidden clickable panel-transition border-l border-border/50 ${
+        isDimmed
+          ? "opacity-35 filter blur-[0.6px] scale-[0.99]"
+          : "opacity-100 scale-100"
+      }`}
       style={{
         background: "var(--panel-creator-bg)",
       }}
     >
-      {/* Deep radial gradient layers */}
+      {/* Hairline subtle background grid */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-70"
+        className="absolute inset-0 pointer-events-none opacity-[0.04] group-hover:opacity-[0.08] transition-opacity duration-500"
         style={{
-          background: `radial-gradient(ellipse 80% 80% at 80% 90%, rgba(${O},0.16) 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 20% 10%, rgba(${O},0.07) 0%, transparent 60%)`,
+          backgroundImage:
+            "linear-gradient(to right, var(--text) 1px, transparent 1px), linear-gradient(to bottom, var(--text) 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
         }}
       />
 
-      {/* Animated flowing net canvas — reacts to mouse */}
-      <WaveCanvas accentRgb={O} />
-
-      {/* Cursor-following soft glow */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700"
-        style={{
-          background: `radial-gradient(ellipse 45% 45% at var(--glow-x, 70%) var(--glow-y, 70%), rgba(${O},0.1) 0%, transparent 70%)`,
-        }}
-      />
-
-      {/* Floating brand kit card — xl only */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.4, duration: 0.7, ease: "easeOut" }}
-        className="absolute top-[10%] right-[4%] hidden xl:block pointer-events-none"
-        style={{ animation: "float 8s ease-in-out infinite 1s" }}
-      >
-        <div
-          className="rounded-xl border border-border/50 overflow-hidden"
-          style={{
-            background: "var(--bg2)",
-            opacity: 0.85,
-            backdropFilter: "blur(24px)",
-            WebkitBackdropFilter: "blur(24px)",
-            boxShadow: "0 12px 40px rgba(0,0,0,0.1)",
-          }}
-        >
-          <div className="flex items-center gap-1.5 px-3 py-2 border-b border-border/40">
-            <Palette size={10} style={{ color: ORANGE, opacity: 0.8 }} />
-            <span className="text-[9px] font-semibold tracking-wider text-text3 uppercase">
-              Brand Kit
-            </span>
-          </div>
-          <div className="px-4 py-3 space-y-2 min-w-[150px]">
-            <div className="flex items-center gap-1.5">
-              <div
-                className="w-6 h-6 rounded border border-border/30"
-                style={{ background: ORANGE }}
-              />
-              <div className="w-6 h-6 rounded border border-border/30 bg-amber-400" />
-              <div className="w-6 h-6 rounded border border-border/30 bg-text" />
-              <div className="w-6 h-6 rounded border border-border/30 bg-surface" />
-            </div>
-            <div className="flex gap-1">
-              <div
-                className="flex-1 h-1 rounded-full"
-                style={{ background: ORANGE, opacity: 0.9 }}
-              />
-              <div className="flex-1 h-1 rounded-full bg-amber-400/80" />
-              <div className="flex-1 h-1 rounded-full bg-border" />
-            </div>
-            <p className="font-jetbrains text-[9px] text-text3 tracking-wider">
-              Inter · Syne · DM Serif
-            </p>
-          </div>
+      {/* Top Section Header */}
+      <div className="relative z-10 space-y-1">
+        <div className="flex items-center gap-2 text-xs font-mono text-orange-500 font-bold uppercase tracking-widest">
+          <span>02</span>
+          <span className="text-text3">//</span>
+          <span>Creative Studio</span>
         </div>
-      </motion.div>
+      </div>
 
-      {/* Main content */}
-      <motion.div
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-        className="relative z-10 flex flex-col justify-end flex-1 mt-auto"
-      >
-        <motion.div variants={itemVariants} className="mb-8">
-          <div
-            className="flex items-center gap-2 mb-2"
-            style={{ color: `${ORANGE}cc` }}
-          >
-            <Palette size={14} strokeWidth={2.5} />
-            <span className="text-[11px] font-bold tracking-[0.3em] uppercase mt-0.5">
-              Creator
-            </span>
-          </div>
-          <p className="text-[10px] font-jetbrains uppercase tracking-widest text-text3/70 ml-6">
-            — Art meets psychology
-          </p>
-        </motion.div>
-
-        <motion.h2
-          variants={itemVariants}
-          className="font-dm-serif text-[clamp(2.6rem,4.5vw,5rem)] leading-[1.04] tracking-tight mb-6 text-text"
-        >
-          Crafting{" "}
-          <span className="italic" style={{ color: ORANGE }}>
-            <TypeAnimation
-              sequence={[
-                "stories",
-                2000,
-                "brands",
-                2000,
-                "visuals",
-                2000,
-                "identities",
-                2000,
-              ]}
-              wrapper="span"
-              speed={50}
-              repeat={Infinity}
-            />
+      {/* Main Content */}
+      <div className="relative z-10 space-y-4 my-auto py-3">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-text leading-[1.1]">
+          Content Strategy <br />
+          <span className="text-orange-500 font-serif italic font-normal">
+            & Brand Design
           </span>
-          <br />
-          <span className="text-text3">that resonate.</span>
-        </motion.h2>
+        </h2>
 
-        <motion.p
-          variants={itemVariants}
-          className="text-[14px] text-text2 leading-relaxed max-w-[340px] mb-8 font-inter"
-        >
-          Visual creator and UI/UX designer building brands, crafting
-          experiences and telling stories that resonate and convert.
-        </motion.p>
+        <p className="text-xs sm:text-sm text-text2 max-w-md font-sans leading-relaxed">
+          Crafting high-impact digital content, strategic brand stories, and
+          intuitive visual product experiences built to connect with human
+          audiences.
+        </p>
 
-        <motion.div
-          variants={itemVariants}
-          className="flex flex-wrap gap-2 mb-10"
-        >
-          {landingCreatorSkills.slice(0, 6).map((skill) => (
+        {/* Strategic Skills Tags */}
+        <div className="flex flex-wrap gap-1.5 pt-1 text-xs font-mono">
+          {landingCreatorSkills.map((skill) => (
             <span
               key={skill}
-              className="text-[11px] font-semibold tracking-wider px-3 py-1.5 rounded-md text-text2 border border-border transition-all duration-200 bg-surface"
-              onMouseEnter={(e) => {
-                const el = e.currentTarget as HTMLSpanElement;
-                el.style.borderColor = `${ORANGE}99`;
-                el.style.color = `${ORANGE}`;
-                el.style.background = `rgba(${O},0.08)`;
-              }}
-              onMouseLeave={(e) => {
-                const el = e.currentTarget as HTMLSpanElement;
-                el.style.borderColor = "";
-                el.style.color = "";
-                el.style.background = "";
-              }}
+              className="px-2.5 py-0.5 rounded border border-border bg-surface text-text2 group-hover:border-orange-500/50 group-hover:text-orange-500 transition-colors text-[11px]"
             >
               {skill}
             </span>
           ))}
-        </motion.div>
+        </div>
 
-        <motion.div variants={itemVariants}>
-          <div
-            className="relative overflow-hidden inline-flex items-center gap-2.5 px-6 py-3.5 rounded-lg font-syne text-[13px] font-semibold tracking-wide text-white transition-all duration-300 group clickable shadow-lg border border-transparent"
-            style={{ background: ORANGE }}
-            onMouseEnter={(e) => {
-              (e.currentTarget as HTMLDivElement).style.boxShadow =
-                `0 0 32px rgba(${O},0.6)`;
-            }}
-            onMouseLeave={(e) => {
-              (e.currentTarget as HTMLDivElement).style.boxShadow =
-                "0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)";
-            }}
-          >
-            <div className="absolute inset-0 bg-bg2 translate-y-full transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)] group-hover:translate-y-0" />
-            <div className="relative z-10 flex items-center gap-2.5 transition-colors duration-300 group-hover:text-[#c2410c]">
-              <span>View Creative Work</span>
-              <ArrowUpRight
-                size={15}
-                className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-              />
-            </div>
+        {/* Tool Logos Row - Icons Only */}
+        <div className="flex items-center gap-2 pt-2 text-text3">
+          <span className="text-[10px] font-mono text-text3 mr-1">Stack:</span>
+          <div className="flex items-center gap-2 flex-wrap">
+            <FigmaIcon size={18} />
+            <AeIcon size={18} />
+            <AiIcon size={18} />
+            <PrIcon size={18} />
+            <PsIcon size={18} />
+            <CapCutIcon size={18} />
+            <FilmoraIcon size={18} />
+            <CanvaIcon size={18} />
+            <LoomIcon size={18} />
+            <NotionIcon size={18} />
           </div>
-        </motion.div>
-      </motion.div>
+        </div>
+      </div>
 
-      {/* Bottom accent line */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-px"
-        style={{
-          background: `linear-gradient(to right, transparent, rgba(${O},0.4), transparent)`,
-        }}
-      />
+      {/* Bottom CTA Action Button */}
+      <div className="relative z-10 pt-3 flex items-center justify-between border-t border-border">
+        <span className="text-xs font-mono text-text3 group-hover:text-text transition-colors">
+          Explore Design, Branding & Content
+        </span>
+        <div className="flex items-center gap-1.5 px-3.5 py-1.5 rounded border border-border bg-surface group-hover:bg-orange-500 group-hover:border-orange-500 text-xs font-mono font-bold text-text group-hover:text-white transition-all shadow-sm">
+          <span>Enter Studio</span>
+          <ArrowUpRight
+            size={13}
+            className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"
+          />
+        </div>
+      </div>
     </Link>
   );
 }
