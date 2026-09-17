@@ -47,7 +47,7 @@ export function ExperienceSection({
             </div>
             {exp.bullets && exp.bullets.length > 0 ? (
               <ul
-                className={`text-xs leading-relaxed space-y-1 list-disc list-inside ${
+                className={`text-xs leading-relaxed space-y-1.5 list-disc list-outside pl-4 pt-1 ${
                   theme === "dark" ? "text-zinc-300" : "text-slate-600"
                 }`}
               >
