@@ -35,24 +35,67 @@ export function Header({
       <div className="max-w-4xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
         {/* Brand & Focus Switcher */}
         <div className="flex items-center gap-4">
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <img
-              src="/HaileSuit.jpg"
-              alt="Hailemariam Agabzie"
-              className={`w-7 h-7 rounded-full object-cover grayscale contrast-125 border shadow-sm group-hover:scale-105 transition-transform ${
-                theme === "dark" ? "border-zinc-700/80" : "border-slate-300"
-              }`}
-            />
-            <span
-              className={`font-bold text-xs tracking-tight transition-colors ${
+          <div className="relative group/avatar">
+            <Link href="/" className="flex items-center gap-2.5">
+              <div className="relative">
+                <img
+                  src="/HaileSuit.jpg"
+                  alt="Hailemariam Agabzie"
+                  className={`w-7 h-7 rounded-full object-cover grayscale contrast-125 border shadow-sm transition-all duration-300 transform-gpu group-hover/avatar:scale-135 group-hover/avatar:grayscale-0 group-hover/avatar:shadow-md ${
+                    theme === "dark"
+                      ? "border-zinc-700/80 group-hover/avatar:border-blue-400/80"
+                      : "border-slate-300 group-hover/avatar:border-blue-500/80"
+                  }`}
+                />
+                <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-[#050608] ring-1 ring-emerald-400/40 z-10" />
+              </div>
+              <span
+                className={`font-bold text-xs tracking-tight transition-colors ${
+                  theme === "dark"
+                    ? "text-zinc-100 group-hover/avatar:text-blue-400"
+                    : "text-slate-900 group-hover/avatar:text-blue-600"
+                }`}
+              >
+                Hailemariam Agabzie
+              </span>
+            </Link>
+
+            {/* Hover Expand Profile Card */}
+            <div
+              className={`absolute left-0 top-full mt-2 w-60 p-3 rounded-xl border shadow-2xl transition-all duration-300 pointer-events-none opacity-0 invisible -translate-y-2 group-hover/avatar:opacity-100 group-hover/avatar:visible group-hover/avatar:translate-y-0 z-50 ${
                 theme === "dark"
-                  ? "text-zinc-100 group-hover:text-blue-400"
-                  : "text-slate-900 group-hover:text-blue-600"
+                  ? "bg-[#090b0e] border-zinc-800/90 text-zinc-100"
+                  : "bg-white border-slate-200/90 text-slate-900 shadow-xl"
               }`}
             >
-              Hailemariam Agabzie
-            </span>
-          </Link>
+              <div className="flex items-center gap-3">
+                <div className="relative shrink-0">
+                  <img
+                    src="/HaileSuit.jpg"
+                    alt="Hailemariam Agabzie"
+                    className={`w-11 h-11 rounded-xl object-cover border shadow-md ${
+                      theme === "dark" ? "border-zinc-700" : "border-slate-200"
+                    }`}
+                  />
+                  <span className="absolute -bottom-1 -right-1 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-[#090b0e] shadow-sm" />
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="font-extrabold text-xs tracking-tight truncate">
+                    Hailemariam Agabzie
+                  </div>
+                  <div
+                    className={`text-[11px] font-mono font-medium truncate ${
+                      persona === "code" ? "text-blue-400" : "text-orange-400"
+                    }`}
+                  >
+                    {persona === "code"
+                      ? "Full-Stack Engineer"
+                      : "Creator & Designer"}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
 
           {/* Clean Focus Selector */}
           <div
