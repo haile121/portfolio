@@ -70,13 +70,21 @@ export function HeroSection({
       {/* Editorial Header */}
       <div className="space-y-3">
         {/* Subtle Location & Status text line */}
-        <div className="text-xs font-mono text-zinc-500 tracking-wide">
+        <div
+          className={`text-xs font-mono tracking-wide ${
+            theme === "dark" ? "text-zinc-500" : "text-slate-500 font-medium"
+          }`}
+        >
           Addis Ababa, Ethiopia — Available for full-stack engineering & design
           projects.
         </div>
 
         {/* Title */}
-        <h1 className="text-3xl sm:text-5xl font-extrabold tracking-tight">
+        <h1
+          className={`text-3xl sm:text-5xl font-extrabold tracking-tight ${
+            theme === "dark" ? "text-white" : "text-slate-900"
+          }`}
+        >
           Hailemariam Agabzie
         </h1>
 
@@ -87,14 +95,22 @@ export function HeroSection({
           {persona === "code" ? (
             <>
               <span>Full-Stack Engineer ·</span>
-              <span className="opacity-65 text-xs sm:text-sm text-zinc-400 blur-[0.2px] font-normal tracking-wide">
+              <span
+                className={`opacity-65 text-xs sm:text-sm blur-[0.2px] font-normal tracking-wide ${
+                  theme === "dark" ? "text-zinc-400" : "text-slate-500"
+                }`}
+              >
                 Systems, Web, App, AI
               </span>
             </>
           ) : (
             <>
               <span>Creator & Senior Content Writer ·</span>
-              <span className="opacity-65 text-xs sm:text-sm text-zinc-400 blur-[0.2px] font-normal tracking-wide">
+              <span
+                className={`opacity-65 text-xs sm:text-sm blur-[0.2px] font-normal tracking-wide ${
+                  theme === "dark" ? "text-zinc-400" : "text-slate-500"
+                }`}
+              >
                 Strategy, Copy, Visuals, UI/UX
               </span>
             </>
@@ -104,7 +120,7 @@ export function HeroSection({
         {/* Human Bio (Modern, Professional & Client-Attracting) */}
         <p
           className={`text-xs sm:text-sm leading-relaxed max-w-3xl pt-1 ${
-            theme === "dark" ? "text-zinc-300" : "text-slate-600"
+            theme === "dark" ? "text-zinc-300" : "text-slate-700"
           }`}
         >
           {persona === "code"
@@ -116,7 +132,11 @@ export function HeroSection({
         <div className="flex flex-wrap items-center gap-2.5 pt-3 text-xs font-mono">
           <a
             href="mailto:haileag8@gmail.com"
-            className="inline-flex items-center gap-2 px-3.5 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-100 border border-zinc-700/80 font-bold transition-all shadow-sm clickable"
+            className={`inline-flex items-center gap-2 px-3.5 py-2 rounded-lg font-bold transition-all shadow-sm clickable border ${
+              theme === "dark"
+                ? "bg-zinc-800 hover:bg-zinc-700 text-zinc-100 border-zinc-700/80"
+                : "bg-slate-900 hover:bg-slate-800 text-white border-slate-900"
+            }`}
           >
             <Mail size={14} />
             <span>haileag8@gmail.com</span>
@@ -124,7 +144,11 @@ export function HeroSection({
 
           <button
             onClick={handleCopyEmail}
-            className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-zinc-800 bg-zinc-900 text-zinc-300 hover:text-zinc-100 transition-colors clickable"
+            className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border transition-colors clickable font-medium ${
+              theme === "dark"
+                ? "border-zinc-800 bg-zinc-900 text-zinc-300 hover:text-zinc-100"
+                : "border-slate-200/90 bg-slate-100 text-slate-800 hover:text-slate-950 hover:bg-slate-200/80 shadow-sm"
+            }`}
           >
             {copiedEmail ? (
               <Check size={14} className="text-emerald-400" />
@@ -139,9 +163,16 @@ export function HeroSection({
             href="/HAILEMARIAM_AGABZIE_HAILU_CV.pdf"
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-zinc-800 bg-zinc-900 text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors clickable font-mono text-xs font-semibold"
+            className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border transition-colors clickable font-mono text-xs font-semibold ${
+              theme === "dark"
+                ? "border-zinc-800 bg-zinc-900 text-zinc-300 hover:text-white hover:border-zinc-700"
+                : "border-slate-200/90 bg-slate-100 text-slate-800 hover:text-slate-950 hover:bg-slate-200/80 shadow-sm"
+            }`}
           >
-            <FileText size={14} className="text-zinc-400" />
+            <FileText
+              size={14}
+              className={theme === "dark" ? "text-zinc-400" : "text-slate-600"}
+            />
             <span>View CV ↗</span>
           </a>
 
@@ -150,7 +181,11 @@ export function HeroSection({
             href="https://github.com/haile121"
             target="_blank"
             rel="noreferrer"
-            className="p-2.5 rounded-lg border border-zinc-800 bg-zinc-900 text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors clickable flex items-center justify-center"
+            className={`p-2.5 rounded-lg border transition-colors clickable flex items-center justify-center ${
+              theme === "dark"
+                ? "border-zinc-800 bg-zinc-900 text-zinc-300 hover:text-white hover:border-zinc-700"
+                : "border-slate-200/90 bg-slate-100 text-slate-700 hover:text-slate-950 hover:bg-slate-200/80 shadow-sm"
+            }`}
             title="GitHub Profile"
             aria-label="GitHub Profile"
           >
@@ -162,7 +197,11 @@ export function HeroSection({
             href="https://www.linkedin.com/in/hailemariam-agabzie/"
             target="_blank"
             rel="noreferrer"
-            className="p-2.5 rounded-lg border border-zinc-800 bg-zinc-900 text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors clickable flex items-center justify-center"
+            className={`p-2.5 rounded-lg border transition-colors clickable flex items-center justify-center ${
+              theme === "dark"
+                ? "border-zinc-800 bg-zinc-900 text-zinc-300 hover:text-white hover:border-zinc-700"
+                : "border-slate-200/90 bg-slate-100 text-slate-700 hover:text-slate-950 hover:bg-slate-200/80 shadow-sm"
+            }`}
             title="LinkedIn Profile"
             aria-label="LinkedIn Profile"
           >
@@ -174,7 +213,11 @@ export function HeroSection({
             href="https://t.me/Mati_12021"
             target="_blank"
             rel="noreferrer"
-            className="p-2.5 rounded-lg border border-zinc-800 bg-zinc-900 text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors clickable flex items-center justify-center"
+            className={`p-2.5 rounded-lg border transition-colors clickable flex items-center justify-center ${
+              theme === "dark"
+                ? "border-zinc-800 bg-zinc-900 text-zinc-300 hover:text-white hover:border-zinc-700"
+                : "border-slate-200/90 bg-slate-100 text-slate-700 hover:text-slate-950 hover:bg-slate-200/80 shadow-sm"
+            }`}
             title="Telegram Account"
             aria-label="Telegram Account"
           >
@@ -186,7 +229,11 @@ export function HeroSection({
             href="https://x.com/haile_121"
             target="_blank"
             rel="noreferrer"
-            className="p-2.5 rounded-lg border border-zinc-800 bg-zinc-900 text-zinc-300 hover:text-white hover:border-zinc-700 transition-colors clickable flex items-center justify-center"
+            className={`p-2.5 rounded-lg border transition-colors clickable flex items-center justify-center ${
+              theme === "dark"
+                ? "border-zinc-800 bg-zinc-900 text-zinc-300 hover:text-white hover:border-zinc-700"
+                : "border-slate-200/90 bg-slate-100 text-slate-700 hover:text-slate-950 hover:bg-slate-200/80 shadow-sm"
+            }`}
             title="X (Twitter) Account"
             aria-label="X Account"
           >
@@ -196,9 +243,16 @@ export function HeroSection({
           {/* hailemariam.json button */}
           <button
             onClick={handleCopyConfig}
-            className="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-zinc-800/80 bg-zinc-900/60 text-zinc-400 hover:text-zinc-200 transition-colors clickable"
+            className={`inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border transition-colors clickable font-medium ${
+              theme === "dark"
+                ? "border-zinc-800/80 bg-zinc-900/60 text-zinc-400 hover:text-zinc-200"
+                : "border-slate-200/90 bg-slate-100 text-slate-800 hover:text-slate-950 hover:bg-slate-200/80 shadow-sm font-semibold"
+            }`}
           >
-            <FileText size={14} />
+            <FileText
+              size={14}
+              className={theme === "dark" ? "text-zinc-400" : "text-slate-600"}
+            />
             <span>{copiedConfig ? "Copied!" : "hailemariam.json"}</span>
           </button>
         </div>
