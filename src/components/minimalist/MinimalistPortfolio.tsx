@@ -16,6 +16,7 @@ import { TestimonialsSection } from "./TestimonialsSection";
 import { CliTerminal } from "./CliTerminal";
 import { CommandPaletteModal } from "./CommandPaletteModal";
 import { MinimalistLoader } from "./MinimalistLoader";
+import { MobileVerticalNav } from "./MobileVerticalNav";
 
 import { devProjects } from "@/data/dev";
 
@@ -262,6 +263,18 @@ export function MinimalistPortfolio() {
               );
             })}
           </aside>
+        )}
+
+        {/* Mobile Vertical Navigation Bar */}
+        {viewMode === "visual" && (
+          <MobileVerticalNav
+            verticalNavItems={verticalNavItems}
+            activeSection={activeSection}
+            scrollToSection={scrollToSection}
+            theme={theme}
+            accentText={accentText}
+            accentBg={accentBg}
+          />
         )}
 
         {/* CLI / Terminal Mode */}
