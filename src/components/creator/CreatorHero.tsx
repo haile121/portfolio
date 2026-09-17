@@ -104,11 +104,9 @@ export function CreatorHero() {
               Work together
             </a>
             <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                alert("CV will be opened. (PDF file placeholder)");
-              }}
+              href="/creator_cv.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-[13px] bg-surface text-text border border-border rounded-md font-syne text-sm font-semibold tracking-wider transition-all hover:bg-surface2 hover:border-[#f97316]/40 hover:-translate-y-px clickable"
             >
               <FileText size={16} className="text-[#f97316]" />
