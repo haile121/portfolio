@@ -18,13 +18,27 @@ export function SkillsSection({
 
   return (
     <section id="skills" className="space-y-4 pt-4">
-      <div className="flex items-center justify-between border-b border-zinc-800/80 pb-3">
-        <h2 className="text-sm font-mono font-bold uppercase tracking-wider text-zinc-400">
+      <div
+        className={`flex items-center justify-between border-b pb-3 ${
+          theme === "dark" ? "border-zinc-800/80" : "border-slate-200"
+        }`}
+      >
+        <h2
+          className={`text-sm font-mono uppercase tracking-wider ${
+            theme === "dark"
+              ? "text-zinc-400 font-bold"
+              : "text-slate-700 font-extrabold"
+          }`}
+        >
           {persona === "code"
             ? "Technical Stack & Toolkit"
             : "Design Capabilities"}
         </h2>
-        <span className="text-xs font-mono text-zinc-500">
+        <span
+          className={`text-xs font-mono ${
+            theme === "dark" ? "text-zinc-500" : "text-slate-500 font-medium"
+          }`}
+        >
           {items.length} Focus Areas
         </span>
       </div>
@@ -33,26 +47,40 @@ export function SkillsSection({
         {items.map((item, idx) => (
           <div
             key={item.name}
-            className={`p-4 rounded-xl border font-sans ${
+            className={`p-4 rounded-xl border font-sans transition-colors ${
               theme === "dark"
                 ? "bg-zinc-900/30 border-white/[0.07]"
-                : "bg-white border-slate-200"
+                : "bg-white border-slate-200/90 shadow-sm"
             }`}
           >
             <div className="flex items-center justify-between mb-2">
-              <h3 className="text-sm font-bold">{item.name}</h3>
+              <h3
+                className={`text-sm font-bold ${
+                  theme === "dark" ? "text-zinc-100" : "text-slate-900"
+                }`}
+              >
+                {item.name}
+              </h3>
               <span className={`text-[10px] font-mono font-bold ${accentText}`}>
                 [0{idx + 1}]
               </span>
             </div>
-            <p className="text-xs text-zinc-400 mb-3 leading-relaxed">
+            <p
+              className={`text-xs mb-3 leading-relaxed ${
+                theme === "dark" ? "text-zinc-400" : "text-slate-600"
+              }`}
+            >
               {item.desc}
             </p>
             <div className="flex flex-wrap gap-1 font-mono text-[10px]">
               {item.tags.map((t) => (
                 <span
                   key={t}
-                  className="px-2 py-0.5 rounded bg-zinc-800/60 text-zinc-300 border border-zinc-700/50"
+                  className={`px-2 py-0.5 rounded border transition-colors ${
+                    theme === "dark"
+                      ? "bg-zinc-800/60 text-zinc-300 border-zinc-700/50"
+                      : "bg-slate-100 text-slate-800 border-slate-200/90 font-semibold"
+                  }`}
                 >
                   {t}
                 </span>
