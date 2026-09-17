@@ -30,6 +30,13 @@ export function ConstellationCanvas({
     };
     window.addEventListener("resize", handleResize);
 
+    // Pure Binary & Clean Developer Code Characters Matrix
+    const matrixChars = "0101010101010101{}/<>[]!=$%#@*+-~";
+    const fontSize = 13;
+    const columns = Math.floor(width / fontSize) + 1;
+    const drops: number[] = new Array(columns).fill(1);
+
+    // Constellation Particles Variables
     const particles: Array<{
       x: number;
       y: number;
@@ -58,45 +65,72 @@ export function ConstellationCanvas({
     };
     window.addEventListener("mousemove", handleMouseMove);
 
-    const render = () => {
-      ctx.clearRect(0, 0, width, height);
+    let lastMatrixTime = 0;
 
-      const dotColor = matrixMode
-        ? "0, 255, 128"
-        : persona === "code"
-          ? "59, 130, 246"
-          : "249, 115, 22";
+    const render = (time: number) => {
+      if (matrixMode) {
+        // Slow down matrix rain frames slightly for cinematic retro feel
+        if (time - lastMatrixTime > 33) {
+          ctx.fillStyle = "rgba(5, 6, 8, 0.15)";
+          ctx.fillRect(0, 0, width, height);
 
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
+          ctx.font = `${fontSize}px monospace`;
 
-        if (p.x < 0 || p.x > width) p.vx *= -1;
-        if (p.y < 0 || p.y > height) p.vy *= -1;
+          for (let i = 0; i < drops.length; i++) {
+            const char =
+              matrixChars[Math.floor(Math.random() * matrixChars.length)];
+            const x = i * fontSize;
+            const y = drops[i] * fontSize;
 
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(${dotColor}, 0.3)`;
-        ctx.fill();
+            // Bright green head character, slightly darker trail
+            ctx.fillStyle =
+              drops[i] * fontSize > height * 0.8 ? "#34d399" : "#10b981";
+            ctx.fillText(char, x, y);
 
-        const dx = mouseX - p.x;
-        const dy = mouseY - p.y;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 140) {
+            if (y > height && Math.random() > 0.975) {
+              drops[i] = 0;
+            }
+            drops[i]++;
+          }
+          lastMatrixTime = time;
+        }
+      } else {
+        // Standard Constellation Network
+        ctx.clearRect(0, 0, width, height);
+
+        const dotColor = persona === "code" ? "59, 130, 246" : "249, 115, 22";
+
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (p.x < 0 || p.x > width) p.vx *= -1;
+          if (p.y < 0 || p.y > height) p.vy *= -1;
+
           ctx.beginPath();
-          ctx.moveTo(p.x, p.y);
-          ctx.lineTo(mouseX, mouseY);
-          ctx.strokeStyle = `rgba(${dotColor}, ${1 - dist / 140})`;
-          ctx.lineWidth = 0.6;
-          ctx.stroke();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(${dotColor}, 0.3)`;
+          ctx.fill();
+
+          const dx = mouseX - p.x;
+          const dy = mouseY - p.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 140) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(mouseX, mouseY);
+            ctx.strokeStyle = `rgba(${dotColor}, ${1 - dist / 140})`;
+            ctx.lineWidth = 0.6;
+            ctx.stroke();
+          }
         }
       }
 
       animationFrameId = requestAnimationFrame(render);
     };
 
-    render();
+    animationFrameId = requestAnimationFrame(render);
 
     return () => {
       window.removeEventListener("resize", handleResize);
@@ -108,7 +142,9 @@ export function ConstellationCanvas({
   return (
     <canvas
       ref={canvasRef}
-      className="fixed inset-0 pointer-events-none z-0 opacity-40"
+      className={`fixed inset-0 pointer-events-none z-0 ${
+        matrixMode ? "opacity-90" : "opacity-40"
+      }`}
     />
   );
 }
