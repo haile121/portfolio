@@ -27,7 +27,7 @@ export function DevNavbar() {
       <div className="flex items-center gap-3">
         {/* View CV Button */}
         <a
-          href="/hailemariam_cv.pdf"
+          href="/HAILEMARIAM_AGABZIE_HAILU_CV.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-1.5 px-3.5 py-1.5 rounded border border-blue/40 bg-blue/10 hover:bg-blue hover:text-white text-blue text-xs font-mono font-bold transition-all clickable"
