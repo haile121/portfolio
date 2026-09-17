@@ -39,32 +39,56 @@ export function Header({
             <img
               src="/HaileSuit.jpg"
               alt="Hailemariam Agabzie"
-              className="w-7 h-7 rounded-full object-cover grayscale contrast-125 border border-zinc-700/80 shadow-sm group-hover:scale-105 transition-transform"
+              className={`w-7 h-7 rounded-full object-cover grayscale contrast-125 border shadow-sm group-hover:scale-105 transition-transform ${
+                theme === "dark" ? "border-zinc-700/80" : "border-slate-300"
+              }`}
             />
-            <span className="font-bold text-xs tracking-tight group-hover:text-blue-400 transition-colors">
+            <span
+              className={`font-bold text-xs tracking-tight transition-colors ${
+                theme === "dark"
+                  ? "text-zinc-100 group-hover:text-blue-400"
+                  : "text-slate-900 group-hover:text-blue-600"
+              }`}
+            >
               Hailemariam Agabzie
             </span>
           </Link>
 
           {/* Clean Focus Selector */}
-          <div className="hidden sm:flex items-center gap-1 text-xs font-mono border-l border-zinc-800/80 pl-3">
+          <div
+            className={`hidden sm:flex items-center gap-1 text-xs font-mono border-l pl-3 ${
+              theme === "dark" ? "border-zinc-800/80" : "border-slate-200"
+            }`}
+          >
             <button
               onClick={() => setPersona("code")}
               className={`px-2 py-0.5 rounded transition-colors clickable ${
                 persona === "code"
-                  ? "text-blue-400 font-bold underline underline-offset-4"
-                  : "text-zinc-500 hover:text-zinc-300"
+                  ? theme === "dark"
+                    ? "text-blue-400 font-bold underline underline-offset-4"
+                    : "text-blue-600 font-bold underline underline-offset-4"
+                  : theme === "dark"
+                    ? "text-zinc-500 hover:text-zinc-300"
+                    : "text-slate-500 hover:text-slate-900 font-medium"
               }`}
             >
               Developer
             </button>
-            <span className="text-zinc-700">/</span>
+            <span
+              className={theme === "dark" ? "text-zinc-700" : "text-slate-300"}
+            >
+              /
+            </span>
             <button
               onClick={() => setPersona("design")}
               className={`px-2 py-0.5 rounded transition-colors clickable ${
                 persona === "design"
-                  ? "text-orange-400 font-bold underline underline-offset-4"
-                  : "text-zinc-500 hover:text-zinc-300"
+                  ? theme === "dark"
+                    ? "text-orange-400 font-bold underline underline-offset-4"
+                    : "text-orange-600 font-bold underline underline-offset-4"
+                  : theme === "dark"
+                    ? "text-zinc-500 hover:text-zinc-300"
+                    : "text-slate-500 hover:text-slate-900 font-medium"
               }`}
             >
               Creator
@@ -75,18 +99,32 @@ export function Header({
         {/* System Controls */}
         <div className="flex items-center gap-3">
           {/* Clock (Just the time) */}
-          <div className="hidden md:block text-[11px] font-mono text-zinc-500">
+          <div
+            className={`hidden md:block text-[11px] font-mono font-medium ${
+              theme === "dark" ? "text-zinc-500" : "text-slate-500"
+            }`}
+          >
             {currentTime}
           </div>
 
           {/* Visual / CLI Switcher */}
-          <div className="flex items-center gap-1 p-0.5 rounded bg-zinc-900 border border-zinc-800 text-xs font-mono">
+          <div
+            className={`flex items-center gap-1 p-0.5 rounded text-xs font-mono border ${
+              theme === "dark"
+                ? "bg-zinc-900 border-zinc-800"
+                : "bg-slate-100 border-slate-200/90 shadow-sm"
+            }`}
+          >
             <button
               onClick={() => setViewMode("visual")}
               className={`px-2 py-0.5 rounded text-[11px] transition-all flex items-center gap-1 ${
                 viewMode === "visual"
-                  ? "bg-zinc-800 text-zinc-100 font-medium shadow-sm"
-                  : "text-zinc-500 hover:text-zinc-300"
+                  ? theme === "dark"
+                    ? "bg-zinc-800 text-zinc-100 font-medium shadow-sm"
+                    : "bg-white text-slate-900 font-semibold shadow-sm border border-slate-200/60"
+                  : theme === "dark"
+                    ? "text-zinc-500 hover:text-zinc-300"
+                    : "text-slate-500 hover:text-slate-900"
               }`}
             >
               <Sliders size={11} />
@@ -96,8 +134,12 @@ export function Header({
               onClick={() => setViewMode("cli")}
               className={`px-2 py-0.5 rounded text-[11px] transition-all flex items-center gap-1 ${
                 viewMode === "cli"
-                  ? "bg-zinc-800 text-zinc-100 font-medium shadow-sm"
-                  : "text-zinc-500 hover:text-zinc-300"
+                  ? theme === "dark"
+                    ? "bg-zinc-800 text-zinc-100 font-medium shadow-sm"
+                    : "bg-white text-slate-900 font-semibold shadow-sm border border-slate-200/60"
+                  : theme === "dark"
+                    ? "text-zinc-500 hover:text-zinc-300"
+                    : "text-slate-500 hover:text-slate-900"
               }`}
             >
               <Terminal size={11} />
@@ -108,11 +150,21 @@ export function Header({
           {/* Command Palette Button */}
           <button
             onClick={() => setCmdOpen(true)}
-            className="hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded bg-zinc-900 border border-zinc-800 text-xs font-mono text-zinc-400 hover:text-zinc-200 transition-colors"
+            className={`hidden sm:flex items-center gap-1.5 px-2.5 py-1 rounded border text-xs font-mono transition-colors ${
+              theme === "dark"
+                ? "bg-zinc-900 border-zinc-800 text-zinc-400 hover:text-zinc-200"
+                : "bg-slate-100 border-slate-200/90 text-slate-700 hover:text-slate-950 shadow-sm font-medium"
+            }`}
           >
             <Search size={11} />
             <span>Search</span>
-            <kbd className="text-[9px] text-zinc-500 bg-zinc-800 px-1 rounded">
+            <kbd
+              className={`text-[9px] px-1 rounded ${
+                theme === "dark"
+                  ? "text-zinc-500 bg-zinc-800"
+                  : "text-slate-700 bg-slate-200/90 font-bold"
+              }`}
+            >
               ⌘K
             </kbd>
           </button>
@@ -120,7 +172,11 @@ export function Header({
           {/* Theme Toggle */}
           <button
             onClick={toggleTheme}
-            className="p-1.5 rounded bg-zinc-900 border border-zinc-800 text-zinc-400 hover:text-zinc-200 transition-colors"
+            className={`p-1.5 rounded border transition-colors ${
+              theme === "dark"
+                ? "bg-zinc-900 border-zinc-800 text-zinc-400 hover:text-zinc-200"
+                : "bg-slate-100 border-slate-200/90 text-slate-700 hover:text-slate-950 shadow-sm"
+            }`}
             aria-label="Toggle theme"
           >
             {theme === "dark" ? <Sun size={13} /> : <Moon size={13} />}
@@ -129,7 +185,11 @@ export function Header({
           {/* Return link */}
           <Link
             href="/"
-            className="flex items-center gap-1 text-xs font-mono text-zinc-400 hover:text-zinc-100 transition-colors ml-1"
+            className={`flex items-center gap-1 text-xs font-mono transition-colors ml-1 ${
+              theme === "dark"
+                ? "text-zinc-400 hover:text-zinc-100"
+                : "text-slate-600 hover:text-slate-950 font-medium"
+            }`}
           >
             <ArrowLeft size={12} />
             <span className="hidden sm:inline">Split</span>
