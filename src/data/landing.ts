@@ -1,6 +1,6 @@
 export const devCodeBlock = {
   name: "Hailemariam",
-  stack: ["Next.js", "Node.js", "Express", "Nuxt", "TypeScript"],
+  stack: ["Next.js", "Node.js", "Express", "TypeScript"],
   available: true,
 };
 
@@ -17,7 +17,6 @@ export const landingDevSkills = [
   "Tailwind CSS",
   "PostgreSQL",
   "MongoDB",
-  "Nuxt.js",
   "React Native",
   "Flutter",
   "Python",
