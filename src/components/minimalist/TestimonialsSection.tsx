@@ -20,14 +20,28 @@ export function TestimonialsSection({
 
   return (
     <section id="testimonials" className="space-y-4 pt-4">
-      <div className="flex items-center justify-between border-b border-zinc-800/80 pb-3">
+      <div
+        className={`flex items-center justify-between border-b pb-3 ${
+          theme === "dark" ? "border-zinc-800/80" : "border-slate-200"
+        }`}
+      >
         <div className="flex items-center gap-2">
           <MessageSquareQuote size={16} className={accentText} />
-          <h2 className="text-sm font-mono font-bold uppercase tracking-wider text-zinc-400">
+          <h2
+            className={`text-sm font-mono uppercase tracking-wider ${
+              theme === "dark"
+                ? "text-zinc-400 font-bold"
+                : "text-slate-700 font-extrabold"
+            }`}
+          >
             Endorsements & Testimonials
           </h2>
         </div>
-        <span className="text-xs font-mono text-zinc-500">
+        <span
+          className={`text-xs font-mono ${
+            theme === "dark" ? "text-zinc-500" : "text-slate-500 font-medium"
+          }`}
+        >
           {testimonials.length} Reviews
         </span>
       </div>
@@ -43,34 +57,60 @@ export function TestimonialsSection({
               className={`p-4 rounded-xl border flex flex-col justify-between transition-all ${
                 theme === "dark"
                   ? "bg-zinc-900/30 border-white/[0.07] hover:border-zinc-700/80"
-                  : "bg-white border-slate-200 hover:border-slate-300"
+                  : "bg-white border-slate-200/90 hover:border-slate-300 shadow-sm"
               }`}
             >
               <p
                 className={`text-xs leading-relaxed italic mb-4 ${
-                  theme === "dark" ? "text-zinc-300" : "text-slate-600"
+                  theme === "dark"
+                    ? "text-zinc-300"
+                    : "text-slate-700 font-medium"
                 }`}
               >
                 &ldquo;{t.text}&rdquo;
               </p>
 
-              <div className="flex items-center gap-3 pt-3 border-t border-zinc-800/40 mt-auto">
+              <div
+                className={`flex items-center gap-3 pt-3 border-t mt-auto ${
+                  theme === "dark" ? "border-zinc-800/40" : "border-slate-200"
+                }`}
+              >
                 {imgPath ? (
                   <img
                     src={imgPath}
                     alt={t.author}
-                    className="w-8 h-8 rounded-full object-cover border border-zinc-700/80 grayscale hover:grayscale-0 transition-all shrink-0"
+                    className={`w-8 h-8 rounded-full object-cover border grayscale hover:grayscale-0 transition-all shrink-0 ${
+                      theme === "dark"
+                        ? "border-zinc-700/80"
+                        : "border-slate-300"
+                    }`}
                   />
                 ) : (
-                  <div className="w-8 h-8 rounded-full bg-zinc-800 border border-zinc-700 flex items-center justify-center font-mono font-bold text-xs text-zinc-300 shrink-0">
+                  <div
+                    className={`w-8 h-8 rounded-full border flex items-center justify-center font-mono font-bold text-xs shrink-0 ${
+                      theme === "dark"
+                        ? "bg-zinc-800 border-zinc-700 text-zinc-300"
+                        : "bg-slate-100 border-slate-300 text-slate-800"
+                    }`}
+                  >
                     {avatarText}
                   </div>
                 )}
                 <div className="min-w-0">
-                  <div className="text-xs font-bold truncate tracking-tight">
+                  <div
+                    className={`text-xs font-bold truncate tracking-tight ${
+                      theme === "dark" ? "text-zinc-100" : "text-slate-900"
+                    }`}
+                  >
                     {t.author}
                   </div>
-                  <div className="text-[10px] font-mono text-zinc-500 line-clamp-1">
+                  <div
+                    className={`text-[10px] font-mono line-clamp-1 ${
+                      theme === "dark"
+                        ? "text-zinc-500"
+                        : "text-slate-500 font-medium"
+                    }`}
+                  >
                     {t.role}
                   </div>
                 </div>
