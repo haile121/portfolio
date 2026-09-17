@@ -14,7 +14,6 @@ export const devSkillsBar = [
   "TypeScript",
   "JavaScript",
   "Express.js",
-  "Nuxt.js",
   "Python",
   "C++",
   "Dart",
@@ -59,7 +58,6 @@ export const devSkillsBox = [
     tags: [
       "Express.js",
       "Node.js",
-      "Nuxt.js",
       "Python",
       "C++",
       "Dart",
