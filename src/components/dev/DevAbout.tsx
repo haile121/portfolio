@@ -106,8 +106,7 @@ export function DevAbout() {
               <span className="text-[#34d399]">"JavaScript"</span>,<br />
               &nbsp;&nbsp;&nbsp;&nbsp;
               <span className="text-[#34d399]">"TypeScript"</span>,{" "}
-              <span className="text-[#34d399]">"Next.js"</span>,{" "}
-              <span className="text-[#34d399]">"Nuxt.js"</span>,<br />
+              <span className="text-[#34d399]">"Next.js"</span>,<br />
               &nbsp;&nbsp;&nbsp;&nbsp;
               <span className="text-[#34d399]">"React"</span>,{" "}
               <span className="text-[#34d399]">"React Native"</span>,{" "}
