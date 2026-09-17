@@ -7,9 +7,14 @@ import { devProjects, devSkillsBox } from "@/data/dev";
 interface CodeSandboxProps {
   accentText: string;
   accentBg: string;
+  theme?: "dark" | "light";
 }
 
-export function CodeSandbox({ accentText, accentBg }: CodeSandboxProps) {
+export function CodeSandbox({
+  accentText,
+  accentBg,
+  theme = "dark",
+}: CodeSandboxProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const [sandboxCode, setSandboxCode] = useState("haile.getProjects()");
   const [sandboxResult, setSandboxResult] = useState<string>(
@@ -58,20 +63,40 @@ export function CodeSandbox({ accentText, accentBg }: CodeSandboxProps) {
 
   return (
     <section id="sandbox" className="space-y-3 pt-2">
-      <div className="flex items-center justify-between border-b border-zinc-800/80 pb-2">
+      <div
+        className={`flex items-center justify-between border-b pb-2 ${
+          theme === "dark" ? "border-zinc-800/80" : "border-slate-200"
+        }`}
+      >
         <div className="flex items-center gap-2">
           <Terminal size={16} className={accentText} />
-          <h2 className="text-sm font-bold font-mono uppercase tracking-wider">
+          <h2
+            className={`text-sm font-bold font-mono uppercase tracking-wider ${
+              theme === "dark"
+                ? "text-zinc-100"
+                : "text-slate-900 font-extrabold"
+            }`}
+          >
             Interactive Live TypeScript Sandbox
           </h2>
         </div>
         <div className="flex items-center gap-3 font-mono text-xs">
-          <span className="text-zinc-500 hidden sm:inline">
+          <span
+            className={
+              theme === "dark"
+                ? "text-zinc-500 hidden sm:inline"
+                : "text-slate-500 font-medium hidden sm:inline"
+            }
+          >
             Try live runtime queries
           </span>
           <button
             onClick={() => setIsExpanded((prev) => !prev)}
-            className="flex items-center gap-1.5 px-2.5 py-1 rounded bg-zinc-900 border border-zinc-800 text-zinc-300 hover:text-white transition-colors clickable"
+            className={`flex items-center gap-1.5 px-2.5 py-1 rounded border text-xs font-mono transition-colors clickable ${
+              theme === "dark"
+                ? "bg-zinc-900 border-zinc-800 text-zinc-300 hover:text-white"
+                : "bg-slate-100 border-slate-200/90 text-slate-800 hover:text-slate-950 font-semibold shadow-sm"
+            }`}
           >
             <span>{isExpanded ? "Fold Sandbox" : "Expand Sandbox"}</span>
             {isExpanded ? <ChevronUp size={13} /> : <ChevronDown size={13} />}
