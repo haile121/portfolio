@@ -27,7 +27,7 @@ export function CreatorNavbar() {
       <div className="flex items-center gap-3.5">
         {/* View CV Button */}
         <a
-          href="/hailemariam_cv.pdf"
+          href="/creator_cv.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-1.5 px-3.5 py-1.5 rounded border border-[#f97316]/40 bg-[#f97316]/10 hover:bg-[#f97316] hover:text-white text-[#f97316] text-xs font-mono font-bold transition-all clickable"
