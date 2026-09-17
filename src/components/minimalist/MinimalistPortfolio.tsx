@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { ChevronUp } from "lucide-react";
 
 import { ConstellationCanvas } from "./ConstellationCanvas";
@@ -20,19 +20,11 @@ import { MinimalistLoader } from "./MinimalistLoader";
 import { devProjects } from "@/data/dev";
 
 export function MinimalistPortfolio() {
-  const [isLoading, setIsLoading] = useState(() => {
-    if (typeof window !== "undefined") {
-      return !sessionStorage.getItem("haile_minimal_loader_seen");
-    }
-    return true;
-  });
+  const [isLoading, setIsLoading] = useState(true);
 
-  const handleLoaderComplete = () => {
-    if (typeof window !== "undefined") {
-      sessionStorage.setItem("haile_minimal_loader_seen", "true");
-    }
+  const handleLoaderComplete = useCallback(() => {
     setIsLoading(false);
-  };
+  }, []);
 
   const [theme, setTheme] = useState<"dark" | "light">(() => {
     if (typeof window !== "undefined") {
