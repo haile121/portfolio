@@ -32,8 +32,8 @@ export const devSkillsBar = [
 
 export const devStats = [
   { num: "3+", label: "Years experience" },
-  { num: "17+", label: "Projects shipped" },
-  { num: "12+", label: "Happy clients" },
+  { num: "14+", label: "Projects shipped" },
+  { num: "9+", label: "Happy clients" },
   { num: "∞", label: "Cups of tea" },
 ];
 
