@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Search,
@@ -45,14 +45,29 @@ export function CommandPaletteModal({
     navigator.clipboard.writeText("haileag8@gmail.com");
   };
 
+  // ESC key listener to close search command palette
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && cmdOpen) {
+        setCmdOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [cmdOpen, setCmdOpen]);
+
   return (
     <AnimatePresence>
       {cmdOpen && (
-        <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 bg-black/80 backdrop-blur-md">
+        <div
+          onClick={() => setCmdOpen(false)}
+          className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 bg-black/80 backdrop-blur-md clickable"
+        >
           <motion.div
             initial={{ opacity: 0, y: -15 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -15 }}
+            onClick={(e) => e.stopPropagation()}
             className="w-full max-w-xl rounded-2xl border border-zinc-800 bg-[#0d0f14] shadow-2xl overflow-hidden font-sans"
           >
             <div className="p-3 border-b border-zinc-800 flex items-center gap-3">
@@ -65,9 +80,13 @@ export function CommandPaletteModal({
                 className="flex-1 bg-transparent text-sm text-zinc-100 focus:outline-none"
                 autoFocus
               />
-              <kbd className="px-2 py-0.5 text-[10px] font-mono text-zinc-400 bg-zinc-800 rounded border border-zinc-700">
+              <button
+                onClick={() => setCmdOpen(false)}
+                className="px-2 py-0.5 text-[10px] font-mono text-zinc-400 hover:text-white bg-zinc-800 rounded border border-zinc-700 clickable transition-colors"
+                title="Close (ESC)"
+              >
                 ESC
-              </kbd>
+              </button>
             </div>
 
             <div className="p-2 max-h-72 overflow-y-auto space-y-1 text-xs font-mono">
