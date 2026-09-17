@@ -35,10 +35,12 @@ export function Header({
       <div className="max-w-4xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
         {/* Brand & Focus Switcher */}
         <div className="flex items-center gap-4">
-          <Link href="/" className="flex items-center gap-2 group">
-            <span className="font-mono font-bold text-xs px-2 py-1 rounded bg-zinc-900 border border-zinc-800 text-zinc-200">
-              HA
-            </span>
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <img
+              src="/HaileSuit.jpg"
+              alt="Hailemariam Agabzie"
+              className="w-7 h-7 rounded-full object-cover grayscale contrast-125 border border-zinc-700/80 shadow-sm group-hover:scale-105 transition-transform"
+            />
             <span className="font-bold text-xs tracking-tight group-hover:text-blue-400 transition-colors">
               Hailemariam Agabzie
             </span>
@@ -48,9 +50,9 @@ export function Header({
           <div className="hidden sm:flex items-center gap-1 text-xs font-mono border-l border-zinc-800/80 pl-3">
             <button
               onClick={() => setPersona("code")}
-              className={`px-2 py-0.5 rounded transition-colors ${
+              className={`px-2 py-0.5 rounded transition-colors clickable ${
                 persona === "code"
-                  ? "text-blue-400 font-bold underline"
+                  ? "text-blue-400 font-bold underline underline-offset-4"
                   : "text-zinc-500 hover:text-zinc-300"
               }`}
             >
@@ -59,13 +61,13 @@ export function Header({
             <span className="text-zinc-700">/</span>
             <button
               onClick={() => setPersona("design")}
-              className={`px-2 py-0.5 rounded transition-colors ${
+              className={`px-2 py-0.5 rounded transition-colors clickable ${
                 persona === "design"
-                  ? "text-orange-400 font-bold underline"
+                  ? "text-orange-400 font-bold underline underline-offset-4"
                   : "text-zinc-500 hover:text-zinc-300"
               }`}
             >
-              Designer
+              Creator
             </button>
           </div>
         </div>
