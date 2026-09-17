@@ -14,7 +14,7 @@ export function MinimalistLoader({ theme, onComplete }: MinimalistLoaderProps) {
 
   useEffect(() => {
     const startTime = Date.now();
-    const duration = 1000; // 1 second smooth loader
+    const duration = 900; // Smooth, comfortable 900ms progress curve
 
     const timer = setInterval(() => {
       const elapsed = Date.now() - startTime;
@@ -25,10 +25,10 @@ export function MinimalistLoader({ theme, onComplete }: MinimalistLoaderProps) {
         clearInterval(timer);
         setTimeout(() => {
           setIsDone(true);
-          setTimeout(onComplete, 400); // Allow fade out
+          setTimeout(onComplete, 400); // Fluid fade-out window
         }, 150);
       }
-    }, 20);
+    }, 16);
 
     return () => clearInterval(timer);
   }, [onComplete]);
@@ -38,56 +38,23 @@ export function MinimalistLoader({ theme, onComplete }: MinimalistLoaderProps) {
       {!isDone && (
         <motion.div
           initial={{ opacity: 1 }}
-          exit={{ opacity: 0, scale: 0.98, filter: "blur(8px)" }}
-          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-          className={`fixed inset-0 z-[100] flex flex-col items-center justify-center p-6 select-none font-mono ${
-            theme === "dark"
-              ? "bg-[#050608] text-zinc-100"
-              : "bg-slate-50 text-slate-900"
+          exit={{ opacity: 0, scale: 0.99, filter: "blur(6px)" }}
+          transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+          className={`fixed inset-0 z-[100] flex items-center justify-center p-6 select-none ${
+            theme === "dark" ? "bg-[#050608]" : "bg-slate-50"
           }`}
         >
-          <div className="w-full max-w-xs space-y-4 text-center">
-            {/* Minimal Brand Logo */}
-            <motion.div
-              initial={{ opacity: 0, y: 5 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="space-y-1"
+          {/* Ultra-Minimal Text-Free Center Line */}
+          <div className="w-36 sm:w-44 relative">
+            <div
+              className={`h-[2px] w-full rounded-full overflow-hidden ${
+                theme === "dark" ? "bg-zinc-800/80" : "bg-slate-200"
+              }`}
             >
-              <div className="text-xs font-bold tracking-widest uppercase">
-                HAILEMARIAM AGABZIE
-              </div>
-              <div
-                className={`text-[10px] tracking-wider ${
-                  theme === "dark" ? "text-zinc-500" : "text-slate-400"
-                }`}
-              >
-                SYS.INIT // PORTFOLIO RUNTIME
-              </div>
-            </motion.div>
-
-            {/* Progress Bar Container */}
-            <div className="space-y-2">
-              <div
-                className={`h-1 w-full rounded-full overflow-hidden ${
-                  theme === "dark" ? "bg-zinc-800" : "bg-slate-200"
-                }`}
-              >
-                <motion.div
-                  className="h-full bg-blue-500"
-                  style={{ width: `${progress}%` }}
-                />
-              </div>
-
-              <div className="flex items-center justify-between text-[11px] font-mono">
-                <span
-                  className={
-                    theme === "dark" ? "text-zinc-500" : "text-slate-500"
-                  }
-                >
-                  INITIALIZING...
-                </span>
-                <span className="font-bold text-blue-400">{progress}%</span>
-              </div>
+              <motion.div
+                className="h-full bg-blue-500 rounded-full transition-all duration-75 ease-out"
+                style={{ width: `${progress}%` }}
+              />
             </div>
           </div>
         </motion.div>
