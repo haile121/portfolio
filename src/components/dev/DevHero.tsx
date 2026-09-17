@@ -109,11 +109,9 @@ export function DevHero() {
               Get in touch
             </a>
             <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                alert("CV will be opened. (PDF file placeholder)");
-              }}
+              href="/HAILEMARIAM_AGABZIE_HAILU_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-[13px] bg-surface text-text border border-border rounded-md font-inter text-sm font-semibold tracking-wider transition-all hover:bg-surface2 hover:border-blue/40 hover:-translate-y-px clickable"
             >
               <FileText size={16} className="text-blue" />
