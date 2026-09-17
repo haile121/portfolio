@@ -17,7 +17,7 @@ export function KeyboardShortcutsBar({
 
   return (
     <div
-      className={`p-3 rounded-xl border flex items-center gap-3 text-xs font-mono transition-all duration-300 ease-in-out ${
+      className={`hidden sm:flex p-3 rounded-xl border items-center gap-3 text-xs font-mono transition-all duration-300 ease-in-out ${
         isFolded ? "w-fit" : "w-full"
       } ${
         theme === "dark"
