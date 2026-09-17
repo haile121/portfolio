@@ -12,6 +12,7 @@ import { ProjectsSection } from "./ProjectsSection";
 import { ProjectInspectorModal } from "./ProjectInspectorModal";
 import { ExperienceSection } from "./ExperienceSection";
 import { SkillsSection } from "./SkillsSection";
+import { TestimonialsSection } from "./TestimonialsSection";
 import { CliTerminal } from "./CliTerminal";
 import { CommandPaletteModal } from "./CommandPaletteModal";
 
@@ -96,6 +97,7 @@ export function MinimalistPortfolio() {
       "projects",
       "experience",
       "skills",
+      "testimonials",
       "contact",
     ];
     const handleScroll = () => {
@@ -157,7 +159,8 @@ export function MinimalistPortfolio() {
     { id: "projects", label: "03 Projects" },
     { id: "experience", label: "04 Experience" },
     { id: "skills", label: "05 Stack" },
-    { id: "contact", label: "06 Contact" },
+    { id: "testimonials", label: "06 Reviews" },
+    { id: "contact", label: "07 Contact" },
   ];
 
   return (
@@ -260,6 +263,13 @@ export function MinimalistPortfolio() {
             accentText={accentText}
           />
 
+          {/* Testimonials Section */}
+          <TestimonialsSection
+            persona={persona}
+            theme={theme}
+            accentText={accentText}
+          />
+
           {/* Contact Section */}
           <section id="contact" className="pt-6">
             <div
@@ -277,10 +287,10 @@ export function MinimalistPortfolio() {
                 architecture consulting, or technical lead contracts.
               </p>
 
-              <div className="flex flex-wrap items-center justify-center gap-3 pt-2">
+              <div className="flex flex-wrap items-center justify-center gap-3 pt-2 font-mono">
                 <a
                   href="mailto:haileag8@gmail.com"
-                  className={`px-4 py-2 rounded-lg text-white font-bold text-xs shadow transition-all clickable ${accentBg}`}
+                  className="px-4 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-100 border border-zinc-700 font-bold text-xs shadow-sm transition-all clickable"
                 >
                   haileag8@gmail.com
                 </a>
@@ -288,7 +298,7 @@ export function MinimalistPortfolio() {
                   href="https://t.me/Mati_12021"
                   target="_blank"
                   rel="noreferrer"
-                  className="px-4 py-2 rounded-lg border border-zinc-700 bg-zinc-800 text-zinc-200 text-xs font-mono font-semibold clickable"
+                  className="px-4 py-2 rounded-lg border border-zinc-700 bg-zinc-900 text-zinc-300 hover:text-white hover:border-zinc-600 text-xs font-semibold clickable transition-colors"
                 >
                   Telegram DM ↗
                 </a>
@@ -324,15 +334,29 @@ export function MinimalistPortfolio() {
           theme === "dark" ? "border-zinc-800" : "border-slate-200"
         }`}
       >
-        © {new Date().getFullYear()} Hailemariam Agabzie · Advanced Minimalist
-        Developer Engine
+        © {new Date().getFullYear()} Hailemariam Agabzie · Minimalist Developer
+        Engine
       </footer>
+
+      {/* Minimal Matrix Mode Turn Off Button (Top Right, Rectangular-Rounded, No Glow) */}
+      {matrixMode && (
+        <button
+          onClick={() => setMatrixMode(false)}
+          className="fixed top-20 right-6 z-40 flex items-center gap-2 px-3 py-1.5 rounded-lg bg-zinc-900 border border-emerald-500/50 text-emerald-400 text-xs font-mono hover:bg-zinc-800 transition-colors clickable"
+        >
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span>Matrix Active</span>
+          <span className="text-[11px] text-zinc-400 border-l border-zinc-700 pl-2 ml-1 hover:text-white">
+            Turn Off ✕
+          </span>
+        </button>
+      )}
 
       {/* Scroll to Top */}
       {showScrollTop && (
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className={`fixed bottom-6 right-6 p-3 rounded-xl text-white shadow-xl transition-all z-40 clickable ${accentBg}`}
+          className="fixed bottom-6 right-6 p-2.5 rounded-xl bg-zinc-800/90 hover:bg-zinc-700 text-zinc-200 border border-zinc-700/80 backdrop-blur-md shadow-xl transition-all z-40 clickable"
           aria-label="Scroll to top"
         >
           <ChevronUp size={18} />
