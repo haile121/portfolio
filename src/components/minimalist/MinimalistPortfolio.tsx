@@ -200,14 +200,18 @@ export function MinimalistPortfolio() {
                 className={`flex items-center gap-2 text-right transition-all group clickable ${
                   isActive
                     ? `${accentText} font-bold`
-                    : "text-zinc-500 hover:text-zinc-300"
+                    : theme === "dark"
+                      ? "text-zinc-500 hover:text-zinc-300"
+                      : "text-slate-500 hover:text-slate-900 font-medium"
                 }`}
               >
                 <span
                   className={`h-1.5 rounded-full transition-all ${
                     isActive
                       ? `w-4 ${accentBg}`
-                      : "w-1.5 bg-zinc-700 group-hover:bg-zinc-400"
+                      : theme === "dark"
+                        ? "w-1.5 bg-zinc-700 group-hover:bg-zinc-400"
+                        : "w-1.5 bg-slate-300 group-hover:bg-slate-500"
                   }`}
                 />
                 <span>{item.label}</span>
@@ -244,7 +248,11 @@ export function MinimalistPortfolio() {
           />
 
           {/* Code Sandbox */}
-          <CodeSandbox accentText={accentText} accentBg={accentBg} />
+          <CodeSandbox
+            theme={theme}
+            accentText={accentText}
+            accentBg={accentBg}
+          />
 
           {/* Projects Section */}
           <ProjectsSection
@@ -276,13 +284,23 @@ export function MinimalistPortfolio() {
               className={`p-6 sm:p-8 rounded-2xl border text-center space-y-4 ${
                 theme === "dark"
                   ? "bg-zinc-900/60 border-zinc-800"
-                  : "bg-slate-100 border-slate-200"
+                  : "bg-white border-slate-200/90 shadow-sm"
               }`}
             >
-              <h2 className="text-xl sm:text-2xl font-extrabold tracking-tight">
+              <h2
+                className={`text-xl sm:text-2xl font-extrabold tracking-tight ${
+                  theme === "dark" ? "text-white" : "text-slate-900"
+                }`}
+              >
                 Let&apos;s Build High-Performance Digital Products
               </h2>
-              <p className="text-xs sm:text-sm text-zinc-400 max-w-lg mx-auto">
+              <p
+                className={`text-xs sm:text-sm max-w-lg mx-auto ${
+                  theme === "dark"
+                    ? "text-zinc-400"
+                    : "text-slate-600 font-medium"
+                }`}
+              >
                 Reach out for full-stack software development roles, system
                 architecture consulting, or technical lead contracts.
               </p>
@@ -290,7 +308,11 @@ export function MinimalistPortfolio() {
               <div className="flex flex-wrap items-center justify-center gap-3 pt-2 font-mono">
                 <a
                   href="mailto:haileag8@gmail.com"
-                  className="px-4 py-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-100 border border-zinc-700 font-bold text-xs shadow-sm transition-all clickable"
+                  className={`px-4 py-2 rounded-lg font-bold text-xs shadow-sm transition-all clickable border ${
+                    theme === "dark"
+                      ? "bg-zinc-800 hover:bg-zinc-700 text-zinc-100 border-zinc-700"
+                      : "bg-slate-900 hover:bg-slate-800 text-white border-slate-900"
+                  }`}
                 >
                   haileag8@gmail.com
                 </a>
@@ -298,7 +320,11 @@ export function MinimalistPortfolio() {
                   href="https://t.me/Mati_12021"
                   target="_blank"
                   rel="noreferrer"
-                  className="px-4 py-2 rounded-lg border border-zinc-700 bg-zinc-900 text-zinc-300 hover:text-white hover:border-zinc-600 text-xs font-semibold clickable transition-colors"
+                  className={`px-4 py-2 rounded-lg border text-xs font-semibold clickable transition-colors ${
+                    theme === "dark"
+                      ? "border-zinc-700 bg-zinc-900 text-zinc-300 hover:text-white hover:border-zinc-600"
+                      : "border-slate-200/90 bg-slate-100 text-slate-800 hover:text-slate-950 hover:bg-slate-200/80 shadow-sm"
+                  }`}
                 >
                   Telegram DM ↗
                 </a>
