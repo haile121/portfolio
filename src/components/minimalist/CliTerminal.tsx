@@ -63,9 +63,15 @@ export function CliTerminal({
         {
           type: "output",
           text: (
-            <p className="text-emerald-400 font-mono font-bold">
-              CYBERPUNK MATRIX MODE TOGGLED!
-            </p>
+            <div className="p-2.5 rounded-lg bg-emerald-950/40 border border-emerald-500/50 space-y-1 my-1">
+              <p className="text-emerald-400 font-mono font-bold tracking-wider text-xs">
+                ⚡ CYBERPUNK MATRIX DIGITAL RAIN ACTIVATED!
+              </p>
+              <p className="text-emerald-500/80 text-[11px]">
+                Animated falling matrix code enabled on canvas. Type
+                &quot;matrix&quot; again to toggle off.
+              </p>
+            </div>
           ),
         },
       ]);
@@ -96,6 +102,12 @@ export function CliTerminal({
                 cat experience
               </span>{" "}
               - View full-stack career timeline
+            </p>
+            <p>
+              <span className="text-blue-400 font-mono w-28 inline-block">
+                cat cv
+              </span>{" "}
+              - Open official CV / Resume
             </p>
             <p>
               <span className="text-blue-400 font-mono w-28 inline-block">
@@ -136,7 +148,7 @@ export function CliTerminal({
           <div className="space-y-2 text-xs text-zinc-300 max-w-xl leading-relaxed">
             <p className="text-blue-400 font-bold">HAILMARIAM AGABZIE — BIO:</p>
             <p>
-              Full-Stack Software Engineer & UI/UX Craftsman with 4+ years
+              Full-Stack Software Engineer & UI/UX Craftsman with 3+ years
               experience shipping web apps, microservices, and AI tools used by
               1,600+ users. Co-founded developer communities (Meta Codz, Code
               Biruh) and organized international hackathons.
@@ -200,6 +212,26 @@ export function CliTerminal({
             ))}
           </div>
         );
+      case "cat cv":
+      case "cv":
+        window.open("/HAILEMARIAM_AGABZIE_HAILU_CV.pdf", "_blank");
+        output = (
+          <div className="space-y-1 text-xs font-mono">
+            <p className="text-emerald-400 font-bold">
+              ✓ Opening official CV in a new tab...
+            </p>
+            <p className="text-zinc-400 text-[11px]">
+              Direct link:{" "}
+              <a
+                href="/HAILEMARIAM_AGABZIE_HAILU_CV.pdf"
+                target="_blank"
+                className="text-blue-400 underline"
+              >
+                /HAILEMARIAM_AGABZIE_HAILU_CV.pdf
+              </a>
+            </p>
+          </div>
+        );
         break;
 
       case "cat skills":
@@ -248,8 +280,8 @@ export function CliTerminal({
 
   const handleCliSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!cliInput.trim()) return;
-    processCliCommand(cliInput);
+    const commandToRun = cliInput.trim() || "help";
+    processCliCommand(commandToRun);
     setCliInput("");
   };
 
