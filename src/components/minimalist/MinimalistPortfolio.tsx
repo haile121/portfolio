@@ -20,9 +20,58 @@ import { MinimalistLoader } from "./MinimalistLoader";
 import { devProjects } from "@/data/dev";
 
 export function MinimalistPortfolio() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [theme, setTheme] = useState<"dark" | "light">("dark");
-  const [persona, setPersona] = useState<"code" | "design">("code");
+  const [isLoading, setIsLoading] = useState(() => {
+    if (typeof window !== "undefined") {
+      return !sessionStorage.getItem("haile_minimal_loader_seen");
+    }
+    return true;
+  });
+
+  const handleLoaderComplete = () => {
+    if (typeof window !== "undefined") {
+      sessionStorage.setItem("haile_minimal_loader_seen", "true");
+    }
+    setIsLoading(false);
+  };
+
+  const [theme, setTheme] = useState<"dark" | "light">(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("haile_theme");
+      if (saved === "light" || saved === "dark") return saved;
+    }
+    return "dark";
+  });
+
+  const [persona, setPersonaState] = useState<"code" | "design">(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("haile_persona");
+      if (saved === "code" || saved === "design") return saved;
+    }
+    return "code";
+  });
+
+  const toggleTheme = () => {
+    setTheme((prev) => {
+      const next = prev === "dark" ? "light" : "dark";
+      if (typeof window !== "undefined") {
+        localStorage.setItem("haile_theme", next);
+      }
+      return next;
+    });
+  };
+
+  const setPersona = (
+    p: "code" | "design" | ((prev: "code" | "design") => "code" | "design"),
+  ) => {
+    setPersonaState((prev) => {
+      const next = typeof p === "function" ? p(prev) : p;
+      if (typeof window !== "undefined") {
+        localStorage.setItem("haile_persona", next);
+      }
+      return next;
+    });
+  };
+
   const [viewMode, setViewMode] = useState<"visual" | "cli">("visual");
   const [cmdOpen, setCmdOpen] = useState(false);
   const [matrixMode, setMatrixMode] = useState(false);
@@ -130,10 +179,6 @@ export function MinimalistPortfolio() {
     }
   };
 
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
-  };
-
   const togglePersona = () => {
     setPersona((prev) => (prev === "code" ? "design" : "code"));
   };
@@ -168,10 +213,7 @@ export function MinimalistPortfolio() {
   return (
     <>
       {isLoading && (
-        <MinimalistLoader
-          theme={theme}
-          onComplete={() => setIsLoading(false)}
-        />
+        <MinimalistLoader theme={theme} onComplete={handleLoaderComplete} />
       )}
       <div
         className={`min-h-screen font-sans selection:bg-blue-500/30 transition-colors duration-300 relative ${
