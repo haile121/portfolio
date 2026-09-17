@@ -15,10 +15,12 @@ import { SkillsSection } from "./SkillsSection";
 import { TestimonialsSection } from "./TestimonialsSection";
 import { CliTerminal } from "./CliTerminal";
 import { CommandPaletteModal } from "./CommandPaletteModal";
+import { MinimalistLoader } from "./MinimalistLoader";
 
 import { devProjects } from "@/data/dev";
 
 export function MinimalistPortfolio() {
+  const [isLoading, setIsLoading] = useState(true);
   const [theme, setTheme] = useState<"dark" | "light">("dark");
   const [persona, setPersona] = useState<"code" | "design">("code");
   const [viewMode, setViewMode] = useState<"visual" | "cli">("visual");
@@ -164,230 +166,243 @@ export function MinimalistPortfolio() {
   ];
 
   return (
-    <div
-      className={`min-h-screen font-sans selection:bg-blue-500/30 transition-colors duration-300 relative ${
-        matrixMode
-          ? "bg-black text-emerald-400 font-mono"
-          : theme === "dark"
-            ? "bg-[#050608] text-[#e2e8f0]"
-            : "bg-[#f8fafc] text-[#0f172a]"
-      }`}
-    >
-      {/* Background Canvas */}
-      <ConstellationCanvas persona={persona} matrixMode={matrixMode} />
-
-      {/* Header Navigation */}
-      <Header
-        persona={persona}
-        setPersona={setPersona}
-        viewMode={viewMode}
-        setViewMode={setViewMode}
-        theme={theme}
-        toggleTheme={toggleTheme}
-        setCmdOpen={setCmdOpen}
-        currentTime={currentTime}
-      />
-
-      {/* Vertical Scroll Side Navigation Bar */}
-      {viewMode === "visual" && (
-        <aside className="hidden xl:flex fixed right-6 top-1/2 -translate-y-1/2 z-30 flex-col gap-3 font-mono text-[11px]">
-          {verticalNavItems.map((item) => {
-            const isActive = activeSection === item.id;
-            return (
-              <button
-                key={item.id}
-                onClick={() => scrollToSection(item.id)}
-                className={`flex items-center gap-2 text-right transition-all group clickable ${
-                  isActive
-                    ? `${accentText} font-bold`
-                    : theme === "dark"
-                      ? "text-zinc-500 hover:text-zinc-300"
-                      : "text-slate-500 hover:text-slate-900 font-medium"
-                }`}
-              >
-                <span
-                  className={`h-1.5 rounded-full transition-all ${
-                    isActive
-                      ? `w-4 ${accentBg}`
-                      : theme === "dark"
-                        ? "w-1.5 bg-zinc-700 group-hover:bg-zinc-400"
-                        : "w-1.5 bg-slate-300 group-hover:bg-slate-500"
-                  }`}
-                />
-                <span>{item.label}</span>
-              </button>
-            );
-          })}
-        </aside>
-      )}
-
-      {/* CLI / Terminal Mode */}
-      {viewMode === "cli" ? (
-        <CliTerminal
-          setViewMode={setViewMode}
-          matrixMode={matrixMode}
-          setMatrixMode={setMatrixMode}
-          accentBg={accentBg}
+    <>
+      {isLoading && (
+        <MinimalistLoader
+          theme={theme}
+          onComplete={() => setIsLoading(false)}
         />
-      ) : (
-        /* Visual Mode View */
-        <main className="max-w-4xl mx-auto px-4 sm:px-6 py-8 relative z-10 space-y-16">
-          {/* Shortcuts Bar */}
-          <KeyboardShortcutsBar
-            theme={theme}
-            accentText={accentText}
-            scrollToSection={scrollToSection}
-          />
-
-          {/* Hero Section */}
-          <HeroSection
-            persona={persona}
-            theme={theme}
-            accentText={accentText}
-            accentBg={accentBg}
-          />
-
-          {/* Code Sandbox */}
-          <CodeSandbox
-            theme={theme}
-            accentText={accentText}
-            accentBg={accentBg}
-          />
-
-          {/* Projects Section */}
-          <ProjectsSection
-            theme={theme}
-            accentText={accentText}
-            setSelectedProject={setSelectedProject}
-          />
-
-          {/* Experience Section */}
-          <ExperienceSection theme={theme} accentText={accentText} />
-
-          {/* Skills Section */}
-          <SkillsSection
-            persona={persona}
-            theme={theme}
-            accentText={accentText}
-          />
-
-          {/* Testimonials Section */}
-          <TestimonialsSection
-            persona={persona}
-            theme={theme}
-            accentText={accentText}
-          />
-
-          {/* Contact Section */}
-          <section id="contact" className="pt-6">
-            <div
-              className={`p-6 sm:p-8 rounded-2xl border text-center space-y-4 ${
-                theme === "dark"
-                  ? "bg-zinc-900/60 border-zinc-800"
-                  : "bg-white border-slate-200/90 shadow-sm"
-              }`}
-            >
-              <h2
-                className={`text-xl sm:text-2xl font-extrabold tracking-tight ${
-                  theme === "dark" ? "text-white" : "text-slate-900"
-                }`}
-              >
-                Let&apos;s Build High-Performance Digital Products
-              </h2>
-              <p
-                className={`text-xs sm:text-sm max-w-lg mx-auto ${
-                  theme === "dark"
-                    ? "text-zinc-400"
-                    : "text-slate-600 font-medium"
-                }`}
-              >
-                Reach out for full-stack software development roles, system
-                architecture consulting, or technical lead contracts.
-              </p>
-
-              <div className="flex flex-wrap items-center justify-center gap-3 pt-2 font-mono">
-                <a
-                  href="mailto:haileag8@gmail.com"
-                  className={`px-4 py-2 rounded-lg font-bold text-xs shadow-sm transition-all clickable border ${
-                    theme === "dark"
-                      ? "bg-zinc-800 hover:bg-zinc-700 text-zinc-100 border-zinc-700"
-                      : "bg-slate-900 hover:bg-slate-800 text-white border-slate-900"
-                  }`}
-                >
-                  haileag8@gmail.com
-                </a>
-                <a
-                  href="https://t.me/Mati_12021"
-                  target="_blank"
-                  rel="noreferrer"
-                  className={`px-4 py-2 rounded-lg border text-xs font-semibold clickable transition-colors ${
-                    theme === "dark"
-                      ? "border-zinc-700 bg-zinc-900 text-zinc-300 hover:text-white hover:border-zinc-600"
-                      : "border-slate-200/90 bg-slate-100 text-slate-800 hover:text-slate-950 hover:bg-slate-200/80 shadow-sm"
-                  }`}
-                >
-                  Telegram DM ↗
-                </a>
-              </div>
-            </div>
-          </section>
-        </main>
       )}
-
-      {/* Project Inspector Modal */}
-      <ProjectInspectorModal
-        selectedProject={selectedProject}
-        setSelectedProject={setSelectedProject}
-        accentText={accentText}
-        accentBg={accentBg}
-        persona={persona}
-      />
-
-      {/* Command Palette Modal */}
-      <CommandPaletteModal
-        cmdOpen={cmdOpen}
-        setCmdOpen={setCmdOpen}
-        scrollToSection={scrollToSection}
-        togglePersona={togglePersona}
-        viewMode={viewMode}
-        setViewMode={setViewMode}
-        toggleTheme={toggleTheme}
-      />
-
-      {/* Footer */}
-      <footer
-        className={`border-t py-6 text-center text-xs font-mono opacity-60 ${
-          theme === "dark" ? "border-zinc-800" : "border-slate-200"
+      <div
+        className={`min-h-screen font-sans selection:bg-blue-500/30 transition-colors duration-300 relative ${
+          matrixMode
+            ? "bg-black text-emerald-400 font-mono"
+            : theme === "dark"
+              ? "bg-[#050608] text-[#e2e8f0]"
+              : "bg-[#f8fafc] text-[#0f172a]"
         }`}
       >
-        © {new Date().getFullYear()} Hailemariam Agabzie · Minimalist Developer
-        Engine
-      </footer>
+        {/* Background Canvas */}
+        <ConstellationCanvas persona={persona} matrixMode={matrixMode} />
 
-      {/* Minimal Matrix Mode Turn Off Button (Top Right, Rectangular-Rounded, No Glow) */}
-      {matrixMode && (
-        <button
-          onClick={() => setMatrixMode(false)}
-          className="fixed top-20 right-6 z-40 flex items-center gap-2 px-3 py-1.5 rounded-lg bg-zinc-900 border border-emerald-500/50 text-emerald-400 text-xs font-mono hover:bg-zinc-800 transition-colors clickable"
-        >
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span>Matrix Active</span>
-          <span className="text-[11px] text-zinc-400 border-l border-zinc-700 pl-2 ml-1 hover:text-white">
-            Turn Off ✕
-          </span>
-        </button>
-      )}
+        {/* Header Navigation */}
+        <Header
+          persona={persona}
+          setPersona={setPersona}
+          viewMode={viewMode}
+          setViewMode={setViewMode}
+          theme={theme}
+          toggleTheme={toggleTheme}
+          setCmdOpen={setCmdOpen}
+          currentTime={currentTime}
+        />
 
-      {/* Scroll to Top */}
-      {showScrollTop && (
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="fixed bottom-6 right-6 p-2.5 rounded-xl bg-zinc-800/90 hover:bg-zinc-700 text-zinc-200 border border-zinc-700/80 backdrop-blur-md shadow-xl transition-all z-40 clickable"
-          aria-label="Scroll to top"
+        {/* Vertical Scroll Side Navigation Bar */}
+        {viewMode === "visual" && (
+          <aside className="hidden xl:flex fixed right-6 top-1/2 -translate-y-1/2 z-30 flex-col gap-3 font-mono text-[11px]">
+            {verticalNavItems.map((item) => {
+              const isActive = activeSection === item.id;
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => scrollToSection(item.id)}
+                  className={`flex items-center gap-2 text-right transition-all group clickable ${
+                    isActive
+                      ? `${accentText} font-bold`
+                      : theme === "dark"
+                        ? "text-zinc-500 hover:text-zinc-300"
+                        : "text-slate-500 hover:text-slate-900 font-medium"
+                  }`}
+                >
+                  <span
+                    className={`h-1.5 rounded-full transition-all ${
+                      isActive
+                        ? `w-4 ${accentBg}`
+                        : theme === "dark"
+                          ? "w-1.5 bg-zinc-700 group-hover:bg-zinc-400"
+                          : "w-1.5 bg-slate-300 group-hover:bg-slate-500"
+                    }`}
+                  />
+                  <span>{item.label}</span>
+                </button>
+              );
+            })}
+          </aside>
+        )}
+
+        {/* CLI / Terminal Mode */}
+        {viewMode === "cli" ? (
+          <CliTerminal
+            setViewMode={setViewMode}
+            matrixMode={matrixMode}
+            setMatrixMode={setMatrixMode}
+            accentBg={accentBg}
+          />
+        ) : (
+          /* Visual Mode View */
+          <main className="max-w-4xl mx-auto px-4 sm:px-6 py-8 relative z-10 space-y-16">
+            {/* Shortcuts Bar */}
+            <KeyboardShortcutsBar
+              theme={theme}
+              accentText={accentText}
+              scrollToSection={scrollToSection}
+            />
+
+            {/* Hero Section */}
+            <HeroSection
+              persona={persona}
+              theme={theme}
+              accentText={accentText}
+              accentBg={accentBg}
+            />
+
+            {/* Code Sandbox */}
+            <CodeSandbox
+              theme={theme}
+              accentText={accentText}
+              accentBg={accentBg}
+            />
+
+            {/* Projects Section */}
+            <ProjectsSection
+              persona={persona}
+              theme={theme}
+              accentText={accentText}
+              setSelectedProject={setSelectedProject}
+            />
+
+            {/* Experience Section */}
+            <ExperienceSection
+              persona={persona}
+              theme={theme}
+              accentText={accentText}
+            />
+
+            {/* Skills Section */}
+            <SkillsSection
+              persona={persona}
+              theme={theme}
+              accentText={accentText}
+            />
+
+            {/* Testimonials Section */}
+            <TestimonialsSection
+              persona={persona}
+              theme={theme}
+              accentText={accentText}
+            />
+
+            {/* Contact Section */}
+            <section id="contact" className="pt-6">
+              <div
+                className={`p-6 sm:p-8 rounded-2xl border text-center space-y-4 ${
+                  theme === "dark"
+                    ? "bg-zinc-900/60 border-zinc-800"
+                    : "bg-white border-slate-200/90 shadow-sm"
+                }`}
+              >
+                <h2
+                  className={`text-xl sm:text-2xl font-extrabold tracking-tight ${
+                    theme === "dark" ? "text-white" : "text-slate-900"
+                  }`}
+                >
+                  Let&apos;s Build High-Performance Digital Products
+                </h2>
+                <p
+                  className={`text-xs sm:text-sm max-w-lg mx-auto ${
+                    theme === "dark"
+                      ? "text-zinc-400"
+                      : "text-slate-600 font-medium"
+                  }`}
+                >
+                  Reach out for full-stack software development roles, system
+                  architecture consulting, or technical lead contracts.
+                </p>
+
+                <div className="flex flex-wrap items-center justify-center gap-3 pt-2 font-mono">
+                  <a
+                    href="mailto:haileag8@gmail.com"
+                    className={`px-4 py-2 rounded-lg font-bold text-xs shadow-sm transition-all clickable border ${
+                      theme === "dark"
+                        ? "bg-zinc-800 hover:bg-zinc-700 text-zinc-100 border-zinc-700"
+                        : "bg-slate-900 hover:bg-slate-800 text-white border-slate-900"
+                    }`}
+                  >
+                    haileag8@gmail.com
+                  </a>
+                  <a
+                    href="https://t.me/Mati_12021"
+                    target="_blank"
+                    rel="noreferrer"
+                    className={`px-4 py-2 rounded-lg border text-xs font-semibold clickable transition-colors ${
+                      theme === "dark"
+                        ? "border-zinc-700 bg-zinc-900 text-zinc-300 hover:text-white hover:border-zinc-600"
+                        : "border-slate-200/90 bg-slate-100 text-slate-800 hover:text-slate-950 hover:bg-slate-200/80 shadow-sm"
+                    }`}
+                  >
+                    Telegram DM ↗
+                  </a>
+                </div>
+              </div>
+            </section>
+          </main>
+        )}
+
+        {/* Project Inspector Modal */}
+        <ProjectInspectorModal
+          selectedProject={selectedProject}
+          setSelectedProject={setSelectedProject}
+          accentText={accentText}
+          accentBg={accentBg}
+          persona={persona}
+        />
+
+        {/* Command Palette Modal */}
+        <CommandPaletteModal
+          cmdOpen={cmdOpen}
+          setCmdOpen={setCmdOpen}
+          scrollToSection={scrollToSection}
+          togglePersona={togglePersona}
+          viewMode={viewMode}
+          setViewMode={setViewMode}
+          toggleTheme={toggleTheme}
+        />
+
+        {/* Footer */}
+        <footer
+          className={`border-t py-6 text-center text-xs font-mono opacity-60 ${
+            theme === "dark" ? "border-zinc-800" : "border-slate-200"
+          }`}
         >
-          <ChevronUp size={18} />
-        </button>
-      )}
-    </div>
+          © {new Date().getFullYear()} Hailemariam Agabzie · Minimalist
+          Developer Engine
+        </footer>
+
+        {/* Minimal Matrix Mode Turn Off Button (Top Right, Rectangular-Rounded, No Glow) */}
+        {matrixMode && (
+          <button
+            onClick={() => setMatrixMode(false)}
+            className="fixed top-20 right-6 z-40 flex items-center gap-2 px-3 py-1.5 rounded-lg bg-zinc-900 border border-emerald-500/50 text-emerald-400 text-xs font-mono hover:bg-zinc-800 transition-colors clickable"
+          >
+            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span>Matrix Active</span>
+            <span className="text-[11px] text-zinc-400 border-l border-zinc-700 pl-2 ml-1 hover:text-white">
+              Turn Off ✕
+            </span>
+          </button>
+        )}
+
+        {/* Scroll to Top */}
+        {showScrollTop && (
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="fixed bottom-6 right-6 p-2.5 rounded-xl bg-zinc-800/90 hover:bg-zinc-700 text-zinc-200 border border-zinc-700/80 backdrop-blur-md shadow-xl transition-all z-40 clickable"
+            aria-label="Scroll to top"
+          >
+            <ChevronUp size={18} />
+          </button>
+        )}
+      </div>
+    </>
   );
 }
