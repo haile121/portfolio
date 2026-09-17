@@ -70,25 +70,81 @@ export const creatorExperience = [
     date: "Apr 2026 — Present",
     role: "Senior Content Writer",
     company: "Bright Mart ET",
+    bullets: [
+      "Crafting and executing impactful brand messaging, editorial pieces, and strategic content engineered to drive audience engagement and platform growth.",
+      "Developing content strategies across web platforms and multi-channel marketing touchpoints.",
+    ],
     desc: "Crafting and executing impactful brand messaging, editorial pieces, and strategic content engineered to drive audience engagement and platform growth.",
   },
   {
     date: "May 2025 — Sep 2026",
     role: "Content Creator (Part-time)",
     company: "Muse Promotions · Adama, Ethiopia (Remote)",
+    bullets: [
+      "Crafted appealing, user-centric content in close collaboration with the multimedia team to elevate campaign reach and brand presence.",
+    ],
     desc: "Crafted appealing, user-centric content in close collaboration with the multimedia team to elevate campaign reach and brand presence.",
   },
   {
     date: "2024 — 2025",
     role: "Graphics Designer & Content Creator",
     company: "Pennmax.com · Remote",
+    bullets: [
+      "Designed graphic assets, visual identities, and engaging digital content for multi-platform media campaigns.",
+    ],
     desc: "Designed graphic assets, visual identities, and engaging digital content for multi-platform media campaigns.",
   },
   {
     date: "Jan 2023 — Jul 2026",
     role: "Content Creator & Writer (Freelance)",
     company: "Victory Tutor · Ethiopia (Remote)",
+    bullets: [
+      "Designed and managed engaging multi-platform content over 3+ years to expand digital reach and student engagement.",
+    ],
     desc: "Designed and managed engaging multi-platform content over 3+ years to expand digital reach and student engagement.",
+  },
+];
+
+export const creatorProjects = [
+  {
+    num: "01",
+    name: "Nova Studio — Full Brand System",
+    desc: "Complete visual identity, brand guidelines, color system, and editorial design created for Nova Studio to elevate brand positioning.",
+    tags: ["Brand Identity", "Visual Language", "Logo Design", "Editorial"],
+    href: "https://hailemariamag.me/creator#work",
+  },
+  {
+    num: "02",
+    name: "Pulse — Analytics SaaS UI/UX",
+    desc: "User-centric interface design and interactive dashboard prototyping for Pulse Analytics, translating complex metrics into intuitive visual screens.",
+    tags: ["UI/UX Design", "Figma", "Prototyping", "Analytics Dashboard"],
+    href: "https://hailemariamag.me/creator#work",
+  },
+  {
+    num: "03",
+    name: "Orbit — Creative Studio Logo & Brand",
+    desc: "Modern vector mark and geometric logo design system engineered for Orbit Creative Studio.",
+    tags: ["Logo Design", "Brand Strategy", "Vector Art"],
+    href: "https://hailemariamag.me/creator#work",
+  },
+  {
+    num: "04",
+    name: "Social Campaign — Viral Series (2.4M+ Views)",
+    desc: "Strategic content creation and short-form video production campaign generating over 2.4 Million cumulative views across platforms.",
+    tags: [
+      "Content Creation",
+      "Content Strategy",
+      "Short-form Video",
+      "Analytics",
+    ],
+    href: "https://hailemariamag.me/creator#work",
+  },
+  {
+    num: "05",
+    name: "Annual Report — Editorial Layout",
+    desc: "Editorial layout design, custom typography hierarchy, and publication formatting for high-impact annual corporate report.",
+    tags: ["Editorial Design", "Typography", "Publication Layout"],
+    href: "https://hailemariamag.me/creator#work",
   },
 ];
 
