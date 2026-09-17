@@ -31,9 +31,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio — Developer & Creator",
+  title: "Hailemariam Portfolio — Developer & Creator",
   description:
-    "Full-stack developer building the web of tomorrow and visual creator crafting brand identities.",
+    "Full-stack software engineer building high-performance web systems, AI platforms, and digital experiences.",
 };
 
 export default function RootLayout({
