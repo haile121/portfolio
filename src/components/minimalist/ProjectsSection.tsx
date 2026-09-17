@@ -1,18 +1,23 @@
 "use client";
 
 import { devProjects } from "@/data/dev";
+import { creatorProjects } from "@/data/creator";
 
 interface ProjectsSectionProps {
   theme: "dark" | "light";
   accentText: string;
+  persona?: "code" | "design";
   setSelectedProject: (project: (typeof devProjects)[0]) => void;
 }
 
 export function ProjectsSection({
   theme,
   accentText,
+  persona = "code",
   setSelectedProject,
 }: ProjectsSectionProps) {
+  const projects = persona === "design" ? creatorProjects : devProjects;
+
   return (
     <section id="projects" className="space-y-4 pt-4">
       <div
@@ -27,19 +32,21 @@ export function ProjectsSection({
               : "text-slate-700 font-extrabold"
           }`}
         >
-          Selected Engineering Work
+          {persona === "design"
+            ? "Selected Creative & Design Work"
+            : "Selected Engineering Work"}
         </h2>
         <span
           className={`text-xs font-mono ${
             theme === "dark" ? "text-zinc-500" : "text-slate-500 font-medium"
           }`}
         >
-          {devProjects.length} Projects
+          {projects.length} Projects
         </span>
       </div>
 
       <div className="space-y-3">
-        {devProjects.map((project) => (
+        {projects.map((project) => (
           <div
             key={project.name}
             onClick={() => setSelectedProject(project)}
