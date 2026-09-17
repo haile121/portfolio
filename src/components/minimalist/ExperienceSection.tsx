@@ -1,16 +1,21 @@
 "use client";
 
 import { devExperience } from "@/data/dev";
+import { creatorExperience } from "@/data/creator";
 
 interface ExperienceSectionProps {
   theme: "dark" | "light";
   accentText: string;
+  persona?: "code" | "design";
 }
 
 export function ExperienceSection({
   theme,
   accentText,
+  persona = "code",
 }: ExperienceSectionProps) {
+  const experiences = persona === "design" ? creatorExperience : devExperience;
+
   return (
     <section id="experience" className="space-y-4 pt-4">
       <div
@@ -25,19 +30,19 @@ export function ExperienceSection({
               : "text-slate-700 font-extrabold"
           }`}
         >
-          Career Timeline
+          {persona === "design" ? "Creative Experience" : "Career Timeline"}
         </h2>
         <span
           className={`text-xs font-mono ${
             theme === "dark" ? "text-zinc-500" : "text-slate-500 font-medium"
           }`}
         >
-          {devExperience.length} Positions
+          {experiences.length} Positions
         </span>
       </div>
 
       <div className="space-y-3">
-        {devExperience.map((exp) => (
+        {experiences.map((exp) => (
           <div
             key={exp.role + exp.company}
             className={`p-4 sm:p-5 rounded-xl border transition-all ${
