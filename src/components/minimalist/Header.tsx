@@ -41,7 +41,7 @@ export function Header({
                 <img
                   src="/HaileSuit.jpg"
                   alt="Hailemariam Agabzie"
-                  className={`w-7 h-7 rounded-full object-cover grayscale contrast-125 border shadow-sm transition-all duration-300 transform-gpu group-hover/avatar:scale-135 group-hover/avatar:grayscale-0 group-hover/avatar:shadow-md ${
+                  className={`w-7 h-7 rounded-full object-cover grayscale contrast-125 border shadow-sm transition-all duration-300 transform-gpu group-hover/avatar:scale-135 group-hover/avatar:shadow-md ${
                     theme === "dark"
                       ? "border-zinc-700/80 group-hover/avatar:border-blue-400/80"
                       : "border-slate-300 group-hover/avatar:border-blue-500/80"
@@ -73,7 +73,7 @@ export function Header({
                   <img
                     src="/HaileSuit.jpg"
                     alt="Hailemariam Agabzie"
-                    className={`w-11 h-11 rounded-xl object-cover border shadow-md ${
+                    className={`w-11 h-11 rounded-xl object-cover grayscale contrast-125 border shadow-md ${
                       theme === "dark" ? "border-zinc-700" : "border-slate-200"
                     }`}
                   />
