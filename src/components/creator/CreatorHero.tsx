@@ -59,7 +59,7 @@ export function CreatorHero() {
             transition={{ duration: 0.8, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
             className="text-xs font-bold tracking-[0.2em] uppercase text-[#f97316] mb-3.5 flex items-center gap-3 before:w-8 before:h-px before:bg-current"
           >
-            Content Strategy · Senior Writing · Visual Design
+            Content Creation · Social Media Strategy · Graphic Design
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 50, filter: "blur(10px)" }}
@@ -79,9 +79,10 @@ export function CreatorHero() {
             transition={{ duration: 0.8, delay: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="text-[16px] md:text-[17px] text-text2 leading-relaxed max-w-[540px] mb-7"
           >
-            Senior Content Writer & Content Creator crafting high-impact brand
-            messaging, multimedia visual designs, and digital campaigns
-            engineered to turn audience attention into lasting engagement.
+            Senior Content Creator and Social Media Manager with nearly four
+            years of experience creating strategy-driven content, building brand
+            visibility, and designing engaging visuals that turn attention into
+            lasting audience growth.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}

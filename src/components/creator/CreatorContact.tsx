@@ -33,20 +33,22 @@ export function CreatorContact() {
           className="flex flex-col gap-0.5"
         >
           {creatorContactLinks.map((link) => (
-            <ScrollRevealItem
-              variant="fade-up"
-              key={link}
+            <a
+              key={link.label}
+              href={link.href}
+              target={link.href.startsWith("http") ? "_blank" : undefined}
+              rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
               className="group flex items-center justify-between py-6 border-b border-border text-inherit no-underline relative overflow-hidden transition-all clickable"
             >
               <span className="absolute bottom-0 left-0 h-px bg-[#f97316] w-0 transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:w-full" />
               <span className="text-[22px] font-bold tracking-tight group-hover:text-[#f97316] transition-colors">
-                {link}
+                {link.label}
               </span>
               <ArrowUpRight
                 size={22}
                 className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 opacity-60 group-hover:opacity-100 group-hover:text-[#f97316]"
               />
-            </ScrollRevealItem>
+            </a>
           ))}
         </ScrollReveal>
       </div>

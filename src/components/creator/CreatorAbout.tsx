@@ -34,26 +34,23 @@ export function CreatorAbout() {
             <p className="text-[17px] leading-[1.85] text-text2 mb-5">
               I'm a{" "}
               <strong className="text-text font-semibold">
-                Senior Content Writer & Creator
+                Senior Content Creator, Social Media Manager, and Graphic
+                Designer
               </strong>{" "}
-              who lives at the intersection of strategic writing, brand
-              storytelling, and digital media. I believe compelling content is{" "}
-              <span className="relative inline-block z-0 after:absolute after:bottom-0.5 after:-inset-x-1 after:h-1.5 after:bg-[rgba(249,115,22,0.12)] after:-z-10 after:rounded-sm">
-                never decorative text
-              </span>{" "}
-              — it's clarity engineered to convert.
+              with nearly four years of hands-on experience helping brands grow
+              through strategy, storytelling, and platform-native creative work.
             </p>
           </ScrollReveal>
 
           <ScrollReveal variant="blur-in" delay={0.15}>
             <p className="text-[17px] leading-[1.85] text-text2 mb-5">
-              From crafting high-impact brand messaging and editorial pieces to
-              building{" "}
-              <strong className="text-text font-semibold">
-                multi-platform content strategies
-              </strong>{" "}
-              that earn millions of views, I turn audience attention into
-              long-term brand equity.
+              I create content for Instagram, TikTok, Telegram, Facebook, and
+              other social media platforms, write audience-focused marketing
+              copy, and design visuals that make brand communication clearer,
+              stronger, and more memorable. My work has contributed to content
+              reaching over{" "}
+              <strong className="text-text font-semibold">2 million views</strong>{" "}
+              with a single TikTok video surpassing 100,000 views.
             </p>
           </ScrollReveal>
 
